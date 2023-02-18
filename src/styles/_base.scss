@@ -1,0 +1,114 @@
+@use "./colors";
+@use "./abstracts/mixins";
+@use "./abstracts/variables";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  --swiper-theme-color: white;
+  --swiper-pagination-color: #fff;
+
+  font-size: 62.5%; // 1rem == 10px
+
+  @include mixins.respond(tab-port) {
+    font-size: 50%; // 1rem == 8px
+  }
+
+  @include mixins.respond(tab-land) {
+    font-size: 56.25%; // 1rem == 9px
+  }
+
+  @include mixins.respond(big-desk) {
+    font-size: 75%; // 1rem == 12px, 12/16
+  }
+
+  color: colors.$primary-dark;
+  scroll-behavior: smooth;
+  overflow-y: var(--overflow);
+  // @include mixins.scrollBar(5px);
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+section,
+main,
+div {
+  scroll-padding-top: 2rem;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 4.8rem;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 2.5rem;
+}
+
+p,
+label,
+a,
+input {
+  font-size: variables.$font-size-text;
+  font-weight: normal;
+}
+
+span {
+  font-size: variables.$font-size-span;
+}
+
+a {
+  font-size: variables.$font-size-text;
+  text-decoration: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+img {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+button {
+  border: none;
+  font-family: inherit;
+  font-size: variables.$font-size-text;
+}
+
+textarea {
+  font-family: inherit;
+  font-size: variables.$font-size-text;
+}
+
+input {
+  font-family: inherit;
+}

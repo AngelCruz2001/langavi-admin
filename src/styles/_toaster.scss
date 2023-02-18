@@ -1,0 +1,6 @@
+@use "./abstracts/variables";
+
+.toaster {
+  font-size: variables.$font-size-text;
+  text-align: center;
+}

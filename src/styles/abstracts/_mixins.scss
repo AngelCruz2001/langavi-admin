@@ -1,0 +1,300 @@
+@use "../colors" as *;
+@use "./variables" as *;
+
+@mixin transition {
+  transition: all 0.3s ease-in-out;
+}
+
+@mixin boxShadow {
+  box-shadow: 0 0 1rem 0.3rem rgba($primary, 0.25);
+}
+@mixin insetBoxShadow {
+  box-shadow: inset 0 0 1rem 0.3rem rgba($primary, 0.25);
+}
+
+@mixin insetBoxShadowDark {
+  box-shadow: inset 0 0 1rem 0.3rem rgba($primary-dark, 1);
+}
+@mixin boxShadowDark {
+  box-shadow: 0 0 1rem 0.3rem rgba($primary-dark, 0.25);
+}
+
+@mixin card {
+  border-radius: $div-border-radius;
+  @include boxShadow;
+}
+
+@mixin respond($breakpoint) {
+  @if $breakpoint==phone {
+    @media (max-width: 37.5em) {
+      @content;
+    } // 600px
+  }
+
+  @if $breakpoint==phone-s {
+    @media (max-width: 25.5em) {
+      @content;
+    } // 600px
+  }
+
+  @if $breakpoint==tab-port {
+    @media (max-width: 56.25em) {
+      @content;
+    } // 900px
+  }
+
+  @if $breakpoint==desktop {
+    @media (min-width: 56.25em) {
+      @content;
+    } // 900px
+  }
+
+  @if $breakpoint==from-tab-port {
+    @media (min-width: 768px) {
+      @content;
+    } // 900px
+  }
+
+  @if $breakpoint==tab-land {
+    @media (max-width: 75em) {
+      @content;
+    } //1200px
+  }
+
+  @if $breakpoint==nav-mobile {
+    @media (max-width: 1000px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==from-nav-mobile {
+    @media (min-width: 1000px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==big-desk {
+    @media (min-width: 112.5em) {
+      @content;
+    } //1800px
+  }
+}
+
+@mixin typingAnimation($duration, $delay, $steps) {
+  position: relative;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  &::before {
+    background-color: $bc-color;
+    animation: typing $duration steps($steps) forwards $delay;
+  }
+
+  &::after {
+    width: 0.125em;
+    background-color: white;
+    animation: typing $duration steps($steps) forwards $delay,
+      blink 1250ms steps($steps) infinite;
+  }
+}
+
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin scrollBar($width) {
+  &::-webkit-scrollbar {
+    width: $width;
+    // border-radius: 10rem;
+
+    @include respond(tab-land) {
+      // display: none;
+    }
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 10rem;
+    background-color: rgb(230, 230, 230);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $bc;
+    border-radius: 10rem;
+
+    &:hover {
+      background-color: $primary-dark;
+    }
+  }
+}
+
+@mixin close {
+  position: absolute;
+  z-index: 3;
+  top: 1rem;
+  right: 2rem;
+  color: $primary-dark;
+  font-size: 3rem;
+  // cursor: default;
+}
+
+@mixin nextImage {
+  position: relative;
+
+  & > span {
+    position: unset !important;
+    box-sizing: content-box;
+    pointer-events: none;
+    display: grid;
+    place-items: center;
+
+    // &>img {
+    // object-fit: cover !important;
+    // }
+  }
+}
+
+@mixin button($bc, $hover) {
+  color: white;
+  padding: 1.3rem 2.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: $bc;
+  font-size: 1.4rem;
+  border-radius: $small-border-radius;
+  position: relative;
+  @include transition;
+  text-align: center;
+
+  @include hover {
+    background-color: $hover;
+    transform: translateY(0.2rem);
+  }
+}
+
+// @mixin textShadow {
+//     text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+// }
+
+// @mixin imageShadow {
+//     >span {
+//         >img {
+//             filter: drop-shadow(0 0 5px black);
+//         }
+//     }
+// }
+
+@mixin input($style) {
+  background-color: transparent;
+  height: 3rem;
+  font-size: $input-font-size;
+  width: 100%;
+  max-width: 100%;
+  border: none;
+  border-bottom: 1px solid $disabled-gray;
+  transition: all 0.4s ease-in-out;
+  outline: none;
+  // z-index: -1;
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 50px white inset;
+    box-shadow: 0 0 0 50px white inset;
+    -webkit-text-fill-color: #333;
+  }
+
+  @if $style==disabled {
+    border-bottom: 1px solid $disabled-gray;
+    color: $disabled-gray;
+    // cursor: not-allowed;
+  }
+
+  @if $style==active {
+    border-bottom: 1px solid $text-dark;
+    color: $text-dark;
+    margin-top: 0.5rem;
+  }
+
+  @if $style==edited {
+    border-bottom: 1px solid $primary;
+    color: $primary;
+  }
+
+  @if $style==error {
+    // border-bottom: 1px solid $secondary;
+    border-bottom: 1px solid $red;
+  }
+
+  // span {
+  //     @if ($style==disabled) {
+  //         color: $disabled-gray;
+  //     }
+  //     @if ($style==active) {
+  //         color: $text-dark;
+  //     }
+  //     position: absolute;
+  //     left: 0;
+  //     font-size: $button-font-size;
+  // }
+}
+
+@mixin closeButton {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  width: 3rem;
+  height: 3rem;
+}
+
+@mixin option {
+  border: 0.15rem solid $primary;
+  border-radius: $round-border-radius;
+  font-size: $font-size-text;
+  text-align: center;
+  width: 90%;
+  overflow: hidden;
+  position: relative;
+  font-weight: normal;
+  padding: 1rem 3rem;
+
+  @include respond(phone) {
+    padding: 2rem 3rem;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    height: 1rem;
+    width: 1rem;
+    transform: scale(0);
+    top: var(--y);
+    left: var(--x);
+    border-radius: 100rem;
+    background-color: transparent;
+    transition: transform 0.2s linear, background-color 0.2s linear;
+  }
+
+  @include hover {
+    &::after {
+      transform: scale(200);
+      transition: all 0.5s linear, background-color 0.05s linear;
+      background-color: rgba($primary-light, 0.5);
+    }
+  }
+
+  &.active {
+    color: white;
+    background-color: $primary;
+  }
+}
