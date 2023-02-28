@@ -187,3 +187,23 @@ export const fabsVariants = (delay: number): Variants => ({
     },
   },
 });
+
+export const fadeInChildren = (): Variants => ({
+  hidden: { opacity: 0, scale: 0 },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
+});
+
+export const fadeInChild = (): Variants => ({
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+});

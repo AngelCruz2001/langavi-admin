@@ -1,0 +1,13 @@
+@use "@/styles/colors.scss";
+
+.profileBox {
+    background-color: colors.$black;
+    width: 3.5rem;
+    height: 3.5rem;
+    color: colors.$white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    border-radius: 20%;
+}
