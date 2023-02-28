@@ -9,7 +9,7 @@ import { useState } from "react";
 import { fadeInChildren } from "@/utils/motion";
 import { fadeInChild } from "../../utils/motion";
 
-export const Sidebar = () => {
+export const Sidebar =() => {
   const [showSidebarMobile, setShowSidebarMobile] = useState(false);
 
   const toggleSidebarMobile = () => {
@@ -50,9 +50,8 @@ export const Sidebar = () => {
       initial="hidden"
       animate="visible"
     >
-      <SidebarTitle />
-
       <div className={styles.sidebarItems}>
+        <SidebarTitle isOpen={showSidebarMobile} />
         {sidebarItems.map((item) => (
           <SidebarItem
             key={item.label}
@@ -77,4 +76,3 @@ export const Sidebar = () => {
     </motion.div>
     /* </div> */
   );
-};

@@ -145,9 +145,12 @@
 .container {
     background-color: colors.$white;
     height: 100%;
-    padding: 2rem 1rem;
+    padding: 1rem 0;
     transition: width 0.3s ease-in-out;
-    width: 5.5rem;
+    width: 4rem;
+
+    // @include mixins.grayBorder;
+
     position: fixed;
     z-index: 100;
     &.showSidebarMobile {
@@ -165,8 +168,9 @@
     display: flex;
     position: relative;
     align-items: center;
-    margin-bottom: 4rem;
-    h2 {
+    margin-bottom: 1.5rem;
+
+    p {
         margin-left: 3rem;
         position: absolute;
         width: 11rem;
@@ -174,34 +178,41 @@
         font-weight: 700;
         opacity: 0;
         transform: translateX(-10%);
-        transition: transform 0.2s ease-in-out;
+        transition: transform 0.4s ease-in-out, opacity 0.2s ease-in-out;
     }
 
     .showSidebarMobile & {
-        h2 {
+        p {
             transform: translateX(15%);
             opacity: 1;
         }
     }
 
     @include mixins.respond(from-tab-port) {
-        h2 {
+        p {
             position: initial;
             width: auto;
             transform: none;
             opacity: 1;
             margin-left: 0;
+            margin: 0;
         }
+        min-width: 15vw;
         gap: 2rem;
-        margin-right: 5vw;
+        span { 
+            width: 4rem;
+            height: 4rem;
+        }
+        margin-bottom: 4rem;
     }
 }
 
 .sidebarItems {
-    gap: 1.5rem;
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
+    gap: 1rem;
+    padding: 0 0.5rem;
 
     @include mixins.respond(from-tab-port) {
         margin-bottom: 0;
@@ -212,24 +223,27 @@
 .sidebarItem {
     display: flex;
     align-items: center;
-    font-size: variables.$font-size-text;
+    padding: 0.75rem 0;
+
     transition: all 0.3s ease-in-out;
     p {
+        font-size: variables.$font-size-text;
         position: absolute;
         opacity: 0;
-        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        transition: transform 0.4s ease-in-out, opacity 0.2s ease-in-out;
     }
 
-    .showSidebarMobile & {
-        p {
-            transform: translateX(4rem);
-            opacity: 1;
-        }
+    svg {
+        transition: all 0.3s ease-in-out;
+        width: 1.5rem;
+        height: 1.5rem;
+        margin: 0 0.75rem;
+        stroke: colors.$black;
     }
 
     @include mixins.respond(from-tab-port) {
-        gap: 1.5rem;
-        padding: .5rem;
+        gap: 1rem;
+        padding: 0.5rem 0;
         p {
             position: initial;
             opacity: 1;
@@ -241,12 +255,11 @@
         }
     }
 
-    svg {
-        transition: all 0.3s ease-in-out;
-        width: 2.5rem;
-        height: 2.5rem;
-        stroke: colors.$black;
-        margin: 0.5rem;
+    .showSidebarMobile & {
+        p {
+            transform: translateX(4rem);
+            opacity: 1;
+        }
     }
 
     &:hover {
@@ -259,31 +272,6 @@
     }
 }
 
-.rightArrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    position: absolute;
-    bottom: 4rem;
-    right: -1.8rem;
-    border-radius: 50%;
-    background-color: colors.$secondary-light;
-    svg {
-        width: 1.5rem;
-        height: 1.5rem;
-        stroke: colors.$black;
-        transition: all 0.3s ease-in-out;
-        .showSidebarMobile & {
-            transform: rotate(180deg);
-        }
-    }
-
-    @include mixins.respond(from-phone) {
-        display: none;
-    }
-}
-
 .sidebarItemActive {
     background-color: colors.$secondary-light;
     border-radius: 1rem;
@@ -292,5 +280,29 @@
         fill: colors.$primary;
         stroke: colors.$primary;
         color: colors.$primary;
+    }
+}
+
+.rightArrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    position: absolute;
+    bottom: 4rem;
+    right: -1.2rem;
+    border-radius: 50%;
+    background-color: colors.$secondary-light;
+    svg {
+        width: 1rem;
+        height: 1rem;
+        stroke: colors.$black;
+        transition: all 0.3s ease-in-out;
+        .showSidebarMobile & {
+            transform: rotate(180deg);
+        }
+    }
+    @include mixins.respond(from-tab-port) {
+        display: none;
     }
 }

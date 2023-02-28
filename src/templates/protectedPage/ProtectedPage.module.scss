@@ -9,9 +9,14 @@
 }
 
 .children {
-    margin-left: 6.5rem;
-
+    display: flex;
+    flex-direction: column;
+    
+    margin-left: 4rem;
+    width: calc(100% - 4rem);
+    background-color: red;
     @include mixins.respond(from-tab-port) {
         margin-left: 0;
+        width: 100%;
     }
 }

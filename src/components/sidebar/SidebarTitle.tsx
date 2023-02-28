@@ -1,13 +1,21 @@
 import styles from "./Sidebar.module.scss";
 import { ProfileBox } from "../profile/ProfileBox";
 import { motion } from "framer-motion";
-import { fadeInChild } from '@/utils/motion';
-export const SidebarTitle = () => {
-  
+import { fadeInChild, toogleRotate } from "@/utils/motion";
+
+
+
+export const SidebarTitle = ({ isOpen }: { isOpen: boolean }) => {
   return (
     <motion.div className={styles.title} variants={fadeInChild()}>
-      <ProfileBox />
-      <h2>Langavi Admin</h2>
+      <motion.div
+        variants={toogleRotate()}
+        initial={false}
+        animate={isOpen ? "hello" : ""}
+      >
+        <ProfileBox />
+      </motion.div>
+      <p>Langavi Admin</p>
     </motion.div>
   );
 };
