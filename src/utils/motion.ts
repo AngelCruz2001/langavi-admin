@@ -207,3 +207,16 @@ export const fadeInChild = (): Variants => ({
     opacity: 1,
   },
 });
+
+export const toogleRotate = (): Variants => ({
+  hello: {
+    rotate: 360,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 20,
+      
+
+    },
+  },
+});

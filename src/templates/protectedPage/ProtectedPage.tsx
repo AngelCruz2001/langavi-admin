@@ -1,6 +1,7 @@
 import { Sidebar } from "@/components/sidebar";
 import styles from "./ProtectedPage.module.scss";
 import { useState } from "react";
+import { Navbar } from "../../components/navbar/Navbar";
 
 interface IProtectedPageProps {
   children: React.ReactNode;
@@ -16,7 +17,10 @@ export const ProtectedPage: React.FC<IProtectedPageProps> = ({ children }) => {
   return (
     <div className={styles.container}>
       <Sidebar />
-      <div className={styles.children}>{children}</div>
+      <div className={styles.children}>
+        <Navbar />
+        {children}
+      </div>
     </div>
   );
 };

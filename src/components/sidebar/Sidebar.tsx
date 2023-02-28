@@ -51,7 +51,7 @@ export const Sidebar = React.memo(() => {
       animate="visible"
     >
       <div className={styles.sidebarItems}>
-        <SidebarTitle />
+        <SidebarTitle isOpen={showSidebarMobile} />
         {sidebarItems.map((item) => (
           <SidebarItem
             key={item.label}
