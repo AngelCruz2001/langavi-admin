@@ -5,7 +5,7 @@ import { SidebarTitle } from "./SidebarTitle";
 import { Line } from "@/components";
 import { Svg } from "../svg/Svg";
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import { useState } from "react";
 import { fadeInChildren } from "@/utils/motion";
 import { fadeInChild } from "../../utils/motion";
 
@@ -76,4 +76,3 @@ export const Sidebar =() => {
     </motion.div>
     /* </div> */
   );
-}
