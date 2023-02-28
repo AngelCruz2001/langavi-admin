@@ -5,11 +5,11 @@ import { SidebarTitle } from "./SidebarTitle";
 import { Line } from "@/components";
 import { Svg } from "../svg/Svg";
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import { useState } from "react";
 import { fadeInChildren } from "@/utils/motion";
-import { fadeInChild } from '../../utils/motion';
+import { fadeInChild } from "../../utils/motion";
 
-export const Sidebar = React.memo(() => {
+export const Sidebar = () => {
   const [showSidebarMobile, setShowSidebarMobile] = useState(false);
 
   const toggleSidebarMobile = () => {
@@ -49,7 +49,6 @@ export const Sidebar = React.memo(() => {
       variants={fadeInChildren()}
       initial="hidden"
       animate="visible"
-
     >
       <SidebarTitle />
 
@@ -78,4 +77,4 @@ export const Sidebar = React.memo(() => {
     </motion.div>
     /* </div> */
   );
-});
+};
