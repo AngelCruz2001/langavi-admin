@@ -7,7 +7,7 @@ export const SidebarTitle = () => {
   return (
     <motion.div className={styles.title} variants={fadeInChild()}>
       <ProfileBox />
-      <h2>Langavi Admin</h2>
+      <p>Langavi Admin</p>
     </motion.div>
   );
 };

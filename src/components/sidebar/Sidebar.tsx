@@ -7,7 +7,7 @@ import { Svg } from "../svg/Svg";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { fadeInChildren } from "@/utils/motion";
-import { fadeInChild } from '../../utils/motion';
+import { fadeInChild } from "../../utils/motion";
 
 export const Sidebar = React.memo(() => {
   const [showSidebarMobile, setShowSidebarMobile] = useState(false);
@@ -49,11 +49,9 @@ export const Sidebar = React.memo(() => {
       variants={fadeInChildren()}
       initial="hidden"
       animate="visible"
-
     >
-      <SidebarTitle />
-
       <div className={styles.sidebarItems}>
+        <SidebarTitle />
         {sidebarItems.map((item) => (
           <SidebarItem
             key={item.label}

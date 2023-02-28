@@ -9,7 +9,7 @@
 }
 
 .children {
-    margin-left: 6.5rem;
+    margin-left: 4rem;
 
     @include mixins.respond(from-tab-port) {
         margin-left: 0;
