@@ -1,0 +1,296 @@
+@use "@/styles/abstracts/mixins.scss";
+@use "@/styles/colors.scss";
+@use "@/styles/abstracts/variables.scss";
+@import "@/styles/animations.scss";
+
+// .title {
+//     display: flex;
+//     align-items: center;
+//     gap: 2rem;
+//     margin: 0.5rem 0 2.5rem 0;
+
+//     @include mixins.respond(phone) {
+//         padding: 0;
+//         margin-top: 2rem;
+//         h2 {
+//             display: none;
+//             position: relative;
+//         }
+//         justify-content: center;
+//     }
+
+//     .showSidebarMobile & {
+//         justify-content: initial;
+
+//         h2 {
+//             display: inline-block;
+//             animation: slideInRight 0.3s ease-in-out forwards;
+//         }
+//     }
+
+//     h2 {
+//         font-size: variables.$font-size-text;
+//         font-weight: 700;
+//     }
+// }
+
+// .container {
+//     padding: 2rem;
+//     min-width: 6.5rem;
+//     height: 100%;
+//     position: fixed;
+//     background-color: colors.$white;
+//     transition: all 0.3s ease-in-out;
+//     @include mixins.grayBorder;
+//     @include mixins.respond(phone) {
+//         width: 6.5rem;
+//         padding: 0;
+//     }
+
+//     &.showSidebarMobile {
+//         z-index: 100;
+//         max-width: 100%;
+//         width: 80%;
+//         padding: 0 2rem;
+//         @include mixins.grayBorder;
+//     }
+// }
+
+// .sidebarItems {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 0.5rem;
+//     margin-bottom: 1.5rem;
+// }
+
+// .sidebarItem {
+//     display: flex;
+//     align-items: center;
+//     font-size: variables.$font-size-text;
+//     padding: 1rem;
+//     gap: 1rem;
+//     transition: all 0.3s ease-in-out;
+//     @include mixins.respond(phone) {
+//         justify-content: center;
+//         padding: 1rem;
+
+//     }
+
+//     .showSidebarMobile & {
+//         justify-content: initial;
+//         p {
+//             display: inline-block;
+//             animation: slideInRight 0.3s ease-in-out forwards;
+//         }
+//     }
+
+//     svg {
+//         transition: all 0.3s ease-in-out;
+//         width: 1.5rem;
+//         height: 1.5rem;
+//         stroke: colors.$black;
+
+//         @include mixins.respond(phone) {
+//             width: 2.5rem;
+//             height: 2.5rem;
+//         }
+//     }
+
+//     &:hover {
+//         background-color: colors.$secondary-light;
+//         border-radius: 1rem;
+//         color: colors.$primary;
+//         svg {
+//             stroke: colors.$primary;
+//         }
+//     }
+// }
+
+// .sidebarItemActive {
+//     background-color: colors.$secondary-light;
+//     border-radius: 1rem;
+//     color: colors.$primary;
+//     svg {
+//         fill: colors.$primary;
+//         stroke: colors.$primary;
+//         color: colors.$primary;
+//     }
+// }
+
+// .rightArrow {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     margin-top: 1rem;
+//     width: 2.5rem;
+//     height: 2.5rem;
+//     margin: 2rem auto;
+//     border-radius: 50%;
+//     background-color: colors.$secondary-light;
+//     svg {
+//         width: 1.5rem;
+//         height: 1.5rem;
+//         stroke: colors.$black;
+//         transition: all 0.3s ease-in-out;
+//         .showSidebarMobile & {
+//             transform: rotate(180deg);
+//         }
+//     }
+
+//     @include mixins.respond(from-phone) {
+//         display: none;
+//     }
+// }
+
+.container {
+    background-color: colors.$white;
+    height: 100%;
+    padding: 2rem 1rem;
+    transition: width 0.3s ease-in-out;
+    width: 5.5rem;
+    position: fixed;
+    z-index: 100;
+    &.showSidebarMobile {
+        width: 80%;
+    }
+
+    @include mixins.respond(from-tab-port) {
+        width: auto;
+        position: relative;
+        padding: 2rem;
+    }
+}
+
+.title {
+    display: flex;
+    position: relative;
+    align-items: center;
+    margin-bottom: 4rem;
+    h2 {
+        margin-left: 3rem;
+        position: absolute;
+        width: 11rem;
+        font-size: variables.$font-size-text;
+        font-weight: 700;
+        opacity: 0;
+        transform: translateX(-10%);
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .showSidebarMobile & {
+        h2 {
+            transform: translateX(15%);
+            opacity: 1;
+        }
+    }
+
+    @include mixins.respond(from-tab-port) {
+        h2 {
+            position: initial;
+            width: auto;
+            transform: none;
+            opacity: 1;
+            margin-left: 0;
+        }
+        gap: 2rem;
+        margin-right: 5vw;
+    }
+}
+
+.sidebarItems {
+    gap: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+
+    @include mixins.respond(from-tab-port) {
+        margin-bottom: 0;
+        margin-bottom: 2rem;
+    }
+}
+
+.sidebarItem {
+    display: flex;
+    align-items: center;
+    font-size: variables.$font-size-text;
+    transition: all 0.3s ease-in-out;
+    p {
+        position: absolute;
+        opacity: 0;
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
+
+    .showSidebarMobile & {
+        p {
+            transform: translateX(4rem);
+            opacity: 1;
+        }
+    }
+
+    @include mixins.respond(from-tab-port) {
+        gap: 1.5rem;
+        padding: .5rem;
+        p {
+            position: initial;
+            opacity: 1;
+            transform: none;
+        }
+        svg {
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+
+    svg {
+        transition: all 0.3s ease-in-out;
+        width: 2.5rem;
+        height: 2.5rem;
+        stroke: colors.$black;
+        margin: 0.5rem;
+    }
+
+    &:hover {
+        background-color: colors.$secondary-light;
+        border-radius: 1rem;
+        color: colors.$primary;
+        svg {
+            stroke: colors.$primary;
+        }
+    }
+}
+
+.rightArrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    position: absolute;
+    bottom: 4rem;
+    right: -1.8rem;
+    border-radius: 50%;
+    background-color: colors.$secondary-light;
+    svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        stroke: colors.$black;
+        transition: all 0.3s ease-in-out;
+        .showSidebarMobile & {
+            transform: rotate(180deg);
+        }
+    }
+
+    @include mixins.respond(from-phone) {
+        display: none;
+    }
+}
+
+.sidebarItemActive {
+    background-color: colors.$secondary-light;
+    border-radius: 1rem;
+    color: colors.$primary;
+    svg {
+        fill: colors.$primary;
+        stroke: colors.$primary;
+        color: colors.$primary;
+    }
+}

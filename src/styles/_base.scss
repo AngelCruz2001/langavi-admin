@@ -29,19 +29,20 @@ body {
     font-size: 75%; // 1rem == 12px, 12/16
   }
 
-  color: colors.$primary-dark;
+  // color: colors.$primary-dark; //TODO: DEFINE THE COLOR
   scroll-behavior: smooth;
   overflow-y: var(--overflow);
   // @include mixins.scrollBar(5px);
   max-width: 100vw;
   overflow-x: hidden;
+
 }
 
-section,
-main,
-div {
-  scroll-padding-top: 2rem;
-}
+// section,
+// main,
+// div {
+//   scroll-padding-top: 2rem;
+// }
 
 h1,
 h2,

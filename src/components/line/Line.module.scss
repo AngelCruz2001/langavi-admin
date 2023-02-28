@@ -1,0 +1,9 @@
+@use "@/styles/colors.scss";
+
+.line {
+    width: 90%;
+    height: 1px;
+    opacity: 0.3;
+    background-color: colors.$bc;
+    margin: 0 auto;
+}

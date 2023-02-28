@@ -31,6 +31,12 @@
     } // 600px
   }
 
+  @if $breakpoint==from-phone {
+    @media (min-width: 37.5em) {
+      @content;
+    } // 600px
+  }
+
   @if $breakpoint==phone-s {
     @media (max-width: 25.5em) {
       @content;
@@ -101,8 +107,7 @@
   &::after {
     width: 0.125em;
     background-color: white;
-    animation: typing $duration steps($steps) forwards $delay,
-      blink 1250ms steps($steps) infinite;
+    animation: typing $duration steps($steps) forwards $delay, blink 1250ms steps($steps) infinite;
   }
 }
 
@@ -297,4 +302,9 @@
     color: white;
     background-color: $primary;
   }
+}
+
+@mixin grayBorder {
+  border: 1px solid $bc;
+  border-right-width: 1px;
 }
