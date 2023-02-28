@@ -9,7 +9,7 @@ import { useState } from "react";
 import { fadeInChildren } from "@/utils/motion";
 import { fadeInChild } from "../../utils/motion";
 
-export const Sidebar =() => {
+export const Sidebar = () => {
   const [showSidebarMobile, setShowSidebarMobile] = useState(false);
 
   const toggleSidebarMobile = () => {
@@ -74,5 +74,5 @@ export const Sidebar =() => {
         <Svg iconName="chevron-right" />
       </motion.div>
     </motion.div>
-    /* </div> */
   );
+};
