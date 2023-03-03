@@ -1,0 +1,1561 @@
+[{
+  "_id": {
+    "$oid": "63bf35734eda33b77a72ef70"
+  },
+  "orderNumber": "T53710248",
+  "clientId": {
+    "$oid": "63bf35734eda33b77a72ef6d"
+  },
+  "shippingAddress": {
+    "firstName": "juan alejandro",
+    "lastName": "flores perez",
+    "address": "avenida cuauhtemoc 830, narvarte poniente",
+    "address2": "departamento 603",
+    "city": "benito juarez",
+    "estate": "ciudad de méxico",
+    "country": "méxico",
+    "zip": "3020",
+    "phone": "4621651299",
+    "_id": {
+      "$oid": "63bf35734eda33b77a72ef71"
+    }
+  },
+  "billingAddress": {
+    "firstName": "juan alejandro",
+    "lastName": "flores perez",
+    "address": "avenida cuauhtemoc 830, narvarte poniente",
+    "address2": "departamento 603",
+    "city": "benito juarez",
+    "estate": "ciudad de méxico",
+    "country": "méxico",
+    "zip": "3020",
+    "phone": "4621651299",
+    "_id": {
+      "$oid": "63bf35734eda33b77a72ef72"
+    }
+  },
+  "products": [
+    {
+      "title": "chocolate blanco artesanal",
+      "variantName": "18g",
+      "slug": "chocolate_blanco_artesanal",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/chocolate_blanco_artesanal_18g_1663629800710.png",
+      "price": 270,
+      "quantity": 1,
+      "description": "Caja con 18 barras",
+      "_id": {
+        "$oid": "63bf35734eda33b77a72ef73"
+      }
+    },
+    {
+      "title": "chocolate amargo 73% cacao",
+      "variantName": "18g",
+      "slug": "chocolate_amargo_73-cacao",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/chocolate_amargo_73-cacao_18g_1663629227098.png",
+      "price": 270,
+      "quantity": 1,
+      "description": "Caja con 18 barras",
+      "_id": {
+        "$oid": "63bf35734eda33b77a72ef74"
+      }
+    },
+    {
+      "title": "chocolate de leche premium",
+      "variantName": "18g",
+      "slug": "chocolate_de-leche_premium",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/chocolate_de-leche_premium_18g_1663628487047.png",
+      "price": 270,
+      "quantity": 1,
+      "description": "Caja con 18 barras",
+      "_id": {
+        "$oid": "63bf35734eda33b77a72ef75"
+      }
+    },
+    {
+      "title": "chocolate amargo premium",
+      "variantName": "18g",
+      "slug": "chocolate_amargo_premium",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/chocolate_amargo_premium_18g_1663627587138.png",
+      "price": 270,
+      "quantity": 1,
+      "description": "Caja con 18 barras",
+      "_id": {
+        "$oid": "63bf35734eda33b77a72ef76"
+      }
+    }
+  ],
+  "numberOfItems": 4,
+  "subtotal": 1080,
+  "tax": {
+    "percent": "0.16",
+    "amount": "949.2",
+    "_id": {
+      "$oid": "63bf35734eda33b77a72ef77"
+    }
+  },
+  "total": 1080,
+  "paidAt": "11 de enero de 2023",
+  "transactionId": "1D903767N30929927",
+  "orderStatus": "preparando pedido para ser enviado",
+  "provider": "paypal",
+  "discounts": [],
+  "shippingPrice": 50
+},{
+  "_id": {
+    "$oid": "63c5d89053ca8a8005454393"
+  },
+  "orderNumber": "T44671614",
+  "clientId": {
+    "$oid": "63c5d88d53ca8a8005454390"
+  },
+  "shippingAddress": {
+    "firstName": "giancarlo ",
+    "lastName": "hernández cortés ",
+    "address": "décima avenida norte entre 23 y 25 calle poniente",
+    "address2": "número 22 colonia 5 de febrero ",
+    "city": "tapachula de córdova y ordoñez",
+    "estate": "chis.",
+    "country": "méxico",
+    "zip": "30710",
+    "phone": "9626225910",
+    "_id": {
+      "$oid": "63c5d89053ca8a8005454394"
+    }
+  },
+  "billingAddress": {
+    "firstName": "giancarlo ",
+    "lastName": "hernández cortés ",
+    "address": "décima avenida norte entre 23 y 25 calle poniente",
+    "address2": "número 22 colonia 5 de febrero ",
+    "city": "tapachula de córdova y ordoñez",
+    "estate": "chis.",
+    "country": "méxico",
+    "zip": "30710",
+    "phone": "9626225910",
+    "_id": {
+      "$oid": "63c5d89053ca8a8005454395"
+    }
+  },
+  "products": [
+    {
+      "title": "chocolate amargo 73% cacao",
+      "variantName": "35g",
+      "slug": "chocolate_amargo_73-cacao",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/chocolate_amargo_73-cacao_35g_1663628932464.png",
+      "price": 280,
+      "quantity": 2,
+      "description": "Caja con 10 barras",
+      "_id": {
+        "$oid": "63c5d89053ca8a8005454396"
+      }
+    }
+  ],
+  "numberOfItems": 1,
+  "subtotal": 560,
+  "tax": {
+    "percent": "0.16",
+    "amount": "512.4",
+    "_id": {
+      "$oid": "63c5d89053ca8a8005454397"
+    }
+  },
+  "total": 560,
+  "paidAt": "16 de enero de 2023",
+  "transactionId": "pi_3MR1lRBVNCfvPFNH2bxi0TRL",
+  "orderStatus": "preparando pedido para ser enviado",
+  "provider": "stripe",
+  "discounts": [],
+  "shippingPrice": 50
+},{
+  "_id": {
+    "$oid": "63c77bbec9804cb007e89d05"
+  },
+  "orderNumber": "T20887939",
+  "clientId": {
+    "$oid": "63c77bbbc9804cb007e89cfd"
+  },
+  "shippingAddress": {
+    "firstName": "alonso",
+    "lastName": "cazares flores",
+    "address": "costa rica 229 col. nuevo amanecer 1 sector",
+    "address2": "negocio (ferretería)",
+    "city": "apodaca",
+    "estate": "nuevo león",
+    "country": "méxico",
+    "zip": "66636",
+    "phone": "8124696428",
+    "_id": {
+      "$oid": "63c77bbec9804cb007e89d06"
+    }
+  },
+  "billingAddress": {
+    "firstName": "alonso",
+    "lastName": "cazares flores",
+    "address": "costa rica 229 col. nuevo amanecer 1 sector",
+    "address2": "negocio (ferretería)",
+    "city": "apodaca",
+    "estate": "nuevo león",
+    "country": "méxico",
+    "zip": "66636",
+    "phone": "8124696428",
+    "_id": {
+      "$oid": "63c77bbec9804cb007e89d07"
+    }
+  },
+  "products": [
+    {
+      "title": "chocolate amargo 73% cacao",
+      "variantName": "18g",
+      "slug": "chocolate_amargo_73-cacao",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/chocolate_amargo_73-cacao_18g_1663629227098.png",
+      "price": 270,
+      "quantity": 1,
+      "description": "Caja con 18 barras",
+      "_id": {
+        "$oid": "63c77bbec9804cb007e89d08"
+      }
+    },
+    {
+      "title": "chocolate amargo premium",
+      "variantName": "18g",
+      "slug": "chocolate_amargo_premium",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/chocolate_amargo_premium_18g_1663627587138.png",
+      "price": 270,
+      "quantity": 1,
+      "description": "Caja con 18 barras",
+      "_id": {
+        "$oid": "63c77bbec9804cb007e89d09"
+      }
+    }
+  ],
+  "numberOfItems": 2,
+  "subtotal": 540,
+  "tax": {
+    "percent": "0.16",
+    "amount": "427.56",
+    "_id": {
+      "$oid": "63c77bbec9804cb007e89d0a"
+    }
+  },
+  "total": 459,
+  "paidAt": "18 de enero de 2023",
+  "transactionId": "pi_3MRTgFBVNCfvPFNH1R1DJhpc",
+  "orderStatus": "preparando pedido para ser enviado",
+  "provider": "stripe",
+  "discounts": [
+    {
+      "code": "andres25",
+      "quantity": 0,
+      "percentaje": 15,
+      "_id": {
+        "$oid": "63c77bbec9804cb007e89d0b"
+      }
+    }
+  ],
+  "shippingPrice": 50
+},{
+  "_id": {
+    "$oid": "63c8742cc382947556570339"
+  },
+  "orderNumber": "T93274621",
+  "clientId": {
+    "$oid": "63c86ff717914e6bdfabcdec"
+  },
+  "shippingAddress": {
+    "firstName": "ernesto",
+    "lastName": "garcia",
+    "address": "valle hermoso 1305 col. revolución obrera ",
+    "address2": "1305",
+    "city": "reynosa",
+    "estate": "tamaulipas ",
+    "country": "méxico",
+    "zip": "88759",
+    "phone": "8992096690",
+    "_id": {
+      "$oid": "63c8742cc38294755657033a"
+    }
+  },
+  "billingAddress": {
+    "firstName": "ernesto",
+    "lastName": "garcia",
+    "address": "valle hermoso 1305 col. revolución obrera ",
+    "address2": "1305",
+    "city": "reynosa",
+    "estate": "tamaulipas ",
+    "country": "méxico",
+    "zip": "88759",
+    "phone": "8992096690",
+    "_id": {
+      "$oid": "63c8742cc38294755657033b"
+    }
+  },
+  "products": [
+    {
+      "title": "chocolate amargo premium",
+      "variantName": "18g",
+      "slug": "chocolate_amargo_premium",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/chocolate_amargo_premium_18g_1663627587138.png",
+      "price": 270,
+      "quantity": 1,
+      "description": "Caja con 18 barras",
+      "_id": {
+        "$oid": "63c8742cc38294755657033c"
+      }
+    }
+  ],
+  "numberOfItems": 1,
+  "subtotal": 270,
+  "tax": {
+    "percent": "0.16",
+    "amount": "234.78",
+    "_id": {
+      "$oid": "63c8742cc38294755657033d"
+    }
+  },
+  "total": 229.5,
+  "paidAt": "18 de enero de 2023",
+  "transactionId": "46F70844Y9036582A",
+  "orderStatus": "preparando pedido para ser enviado",
+  "provider": "paypal",
+  "discounts": [
+    {
+      "code": "andres25",
+      "quantity": 0,
+      "percentaje": 15,
+      "_id": {
+        "$oid": "63c8742cc38294755657033e"
+      }
+    }
+  ],
+  "shippingPrice": 50
+},{
+  "_id": {
+    "$oid": "63caeab78c5eb1a5f10d1dc7"
+  },
+  "orderNumber": "T11450592",
+  "clientId": {
+    "$oid": "63caeab48c5eb1a5f10d1dc0"
+  },
+  "shippingAddress": {
+    "firstName": "diego",
+    "lastName": "carrandi",
+    "address": "valle de chipinque 114",
+    "address2": "",
+    "city": "san pedro garza garcía",
+    "estate": "nuevo leon",
+    "country": "méxico",
+    "zip": "66250",
+    "phone": "8125672990",
+    "_id": {
+      "$oid": "63caeab78c5eb1a5f10d1dc8"
+    }
+  },
+  "billingAddress": {
+    "firstName": "diego",
+    "lastName": "carrandi",
+    "address": "valle de chipinque 114",
+    "address2": "",
+    "city": "san pedro garza garcía",
+    "estate": "nuevo leon",
+    "country": "méxico",
+    "zip": "66250",
+    "phone": "8125672990",
+    "_id": {
+      "$oid": "63caeab78c5eb1a5f10d1dc9"
+    }
+  },
+  "products": [
+    {
+      "title": "chocolate de leche premium",
+      "variantName": "18g",
+      "slug": "chocolate_de-leche_premium",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/chocolate_de-leche_premium_18g_1663628487047.png",
+      "price": 270,
+      "quantity": 1,
+      "description": "Caja con 18 barras",
+      "_id": {
+        "$oid": "63caeab78c5eb1a5f10d1dca"
+      }
+    },
+    {
+      "title": "chocolate amargo 73% cacao",
+      "variantName": "18g",
+      "slug": "chocolate_amargo_73-cacao",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/chocolate_amargo_73-cacao_18g_1663629227098.png",
+      "price": 270,
+      "quantity": 1,
+      "description": "Caja con 18 barras",
+      "_id": {
+        "$oid": "63caeab78c5eb1a5f10d1dcb"
+      }
+    }
+  ],
+  "numberOfItems": 2,
+  "subtotal": 540,
+  "tax": {
+    "percent": "0.16",
+    "amount": "427.56",
+    "_id": {
+      "$oid": "63caeab78c5eb1a5f10d1dcc"
+    }
+  },
+  "total": 459,
+  "paidAt": "20 de enero de 2023",
+  "transactionId": "pi_3MSQDYBVNCfvPFNH1FRpeTC7",
+  "orderStatus": "preparando pedido para ser enviado",
+  "provider": "stripe",
+  "discounts": [
+    {
+      "code": "andres25",
+      "quantity": 0,
+      "percentaje": 15,
+      "_id": {
+        "$oid": "63caeab78c5eb1a5f10d1dcd"
+      }
+    }
+  ],
+  "shippingPrice": 50
+},{
+  "_id": {
+    "$oid": "63cc39dfbab5b4a7663c2fde"
+  },
+  "orderNumber": "T66293572",
+  "clientId": {
+    "$oid": "63cc39dcbab5b4a7663c2fd5"
+  },
+  "shippingAddress": {
+    "firstName": "alfredo ",
+    "lastName": "borrego lópez ",
+    "address": "prolongación obregon 1203 oriente nicolas bravo ",
+    "address2": "local de vidrios ",
+    "city": "mante ",
+    "estate": "tamaulipas ",
+    "country": "méxico",
+    "zip": "89860",
+    "phone": "8311626634",
+    "_id": {
+      "$oid": "63cc39dfbab5b4a7663c2fdf"
+    }
+  },
+  "billingAddress": {
+    "firstName": "alfredo ",
+    "lastName": "borrego lópez ",
+    "address": "prolongación obregon 1203 oriente nicolas bravo ",
+    "address2": "local de vidrios ",
+    "city": "mante ",
+    "estate": "tamaulipas ",
+    "country": "méxico",
+    "zip": "89860",
+    "phone": "8311626634",
+    "_id": {
+      "$oid": "63cc39dfbab5b4a7663c2fe0"
+    }
+  },
+  "products": [
+    {
+      "title": "distribuidor pack",
+      "variantName": ".",
+      "slug": "distribuidor_pack",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/distribuidor_pack_._1667930517363.png",
+      "price": 750,
+      "quantity": 1,
+      "description": "5 cajas-90 piezas-18pz por caja",
+      "_id": {
+        "$oid": "63cc39dfbab5b4a7663c2fe1"
+      }
+    }
+  ],
+  "numberOfItems": 1,
+  "subtotal": 750,
+  "tax": {
+    "percent": "0.16",
+    "amount": "535.5",
+    "_id": {
+      "$oid": "63cc39dfbab5b4a7663c2fe2"
+    }
+  },
+  "total": 637.5,
+  "paidAt": "21 de enero de 2023",
+  "transactionId": "pi_3MSmXRBVNCfvPFNH2NvlC2ul",
+  "orderStatus": "preparando pedido para ser enviado",
+  "provider": "stripe",
+  "discounts": [
+    {
+      "code": "andres25",
+      "quantity": 0,
+      "percentaje": 15,
+      "_id": {
+        "$oid": "63cc39dfbab5b4a7663c2fe3"
+      }
+    }
+  ],
+  "shippingPrice": 0
+},{
+  "_id": {
+    "$oid": "63d00d65ad1eddba3ca1cc02"
+  },
+  "orderNumber": "T41013775",
+  "clientId": {
+    "$oid": "63d00d65ad1eddba3ca1cbf9"
+  },
+  "shippingAddress": {
+    "firstName": "cuauhtemoc",
+    "lastName": "torres",
+    "address": "pirul del valle 323a",
+    "address2": "casa portón café ",
+    "city": "león de los aldama",
+    "estate": "gto.",
+    "country": "méxico",
+    "zip": "37140",
+    "phone": "4776476336",
+    "_id": {
+      "$oid": "63d00d65ad1eddba3ca1cc03"
+    }
+  },
+  "billingAddress": {
+    "firstName": "cuauhtemoc",
+    "lastName": "torres",
+    "address": "pirul del valle 323a",
+    "address2": "casa portón café ",
+    "city": "león de los aldama",
+    "estate": "gto.",
+    "country": "méxico",
+    "zip": "37140",
+    "phone": "4776476336",
+    "_id": {
+      "$oid": "63d00d65ad1eddba3ca1cc04"
+    }
+  },
+  "products": [
+    {
+      "title": "chocolate amargo premium",
+      "variantName": "35g",
+      "slug": "chocolate_amargo_premium",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/chocolate_amargo_premium_35g_1663627038908.png",
+      "price": 280,
+      "quantity": 1,
+      "description": "Caja con 10 barras",
+      "_id": {
+        "$oid": "63d00d65ad1eddba3ca1cc05"
+      }
+    }
+  ],
+  "numberOfItems": 1,
+  "subtotal": 280,
+  "tax": {
+    "percent": "0.16",
+    "amount": "241.92000000000002",
+    "_id": {
+      "$oid": "63d00d65ad1eddba3ca1cc06"
+    }
+  },
+  "total": 238,
+  "paidAt": "24 de enero de 2023",
+  "transactionId": "71L9147914842954M",
+  "orderStatus": "preparando pedido para ser enviado",
+  "provider": "paypal",
+  "discounts": [
+    {
+      "code": "andres25",
+      "quantity": 0,
+      "percentaje": 15,
+      "_id": {
+        "$oid": "63d00d65ad1eddba3ca1cc07"
+      }
+    }
+  ],
+  "shippingPrice": 50
+},{
+  "_id": {
+    "$oid": "63d02beee3cc8c801126fe59"
+  },
+  "orderNumber": "T18220784",
+  "clientId": {
+    "$oid": "63d02bebe3cc8c801126fe53"
+  },
+  "shippingAddress": {
+    "firstName": "josé",
+    "lastName": "reyna",
+    "address": "calle reynosa #206",
+    "address2": "casa",
+    "city": "nuevo progreso ",
+    "estate": "tamaulipas",
+    "country": "méxico",
+    "zip": "88810",
+    "phone": "8993331352",
+    "_id": {
+      "$oid": "63d02beee3cc8c801126fe5a"
+    }
+  },
+  "billingAddress": {
+    "firstName": "josé",
+    "lastName": "reyna",
+    "address": "calle reynosa #206",
+    "address2": "casa",
+    "city": "nuevo progreso ",
+    "estate": "tamaulipas",
+    "country": "méxico",
+    "zip": "88810",
+    "phone": "8993331352",
+    "_id": {
+      "$oid": "63d02beee3cc8c801126fe5b"
+    }
+  },
+  "products": [
+    {
+      "title": "distribuidor pack",
+      "variantName": ".",
+      "slug": "distribuidor_pack",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/distribuidor_pack_._1667930517363.png",
+      "price": 750,
+      "quantity": 1,
+      "description": "5 cajas-90 piezas-18pz por caja",
+      "_id": {
+        "$oid": "63d02beee3cc8c801126fe5c"
+      }
+    }
+  ],
+  "numberOfItems": 1,
+  "subtotal": 750,
+  "tax": {
+    "percent": "0.16",
+    "amount": "630",
+    "_id": {
+      "$oid": "63d02beee3cc8c801126fe5d"
+    }
+  },
+  "total": 750,
+  "paidAt": "24 de enero de 2023",
+  "transactionId": "pi_3MTrnzBVNCfvPFNH2qp9hGz8",
+  "orderStatus": "preparando pedido para ser enviado",
+  "provider": "stripe",
+  "discounts": [],
+  "shippingPrice": 0
+},{
+  "_id": {
+    "$oid": "63d9a344121c025b0d96c51d"
+  },
+  "orderNumber": "T9246107",
+  "clientId": {
+    "$oid": "63cc39dcbab5b4a7663c2fd5"
+  },
+  "shippingAddress": {
+    "firstName": "alfredo",
+    "lastName": "borrego lópez",
+    "address": "prolongación obregon 1203 oriente nicolas bravo",
+    "address2": "local de vidrios ",
+    "city": "mante ",
+    "estate": "tamaulipas",
+    "country": "méxico",
+    "zip": "89860",
+    "phone": "8311626634",
+    "_id": {
+      "$oid": "63d9a344121c025b0d96c51e"
+    }
+  },
+  "billingAddress": {
+    "firstName": "alfredo",
+    "lastName": "borrego lópez",
+    "address": "prolongación obregon 1203 oriente nicolas bravo",
+    "address2": "local de vidrios ",
+    "city": "mante ",
+    "estate": "tamaulipas",
+    "country": "méxico",
+    "zip": "89860",
+    "phone": "8311626634",
+    "_id": {
+      "$oid": "63d9a344121c025b0d96c51f"
+    }
+  },
+  "products": [
+    {
+      "title": "distribuidor pack",
+      "variantName": ".",
+      "slug": "distribuidor_pack",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/distribuidor_pack_._1667930517363.png",
+      "price": 750,
+      "quantity": 2,
+      "description": "5 cajas-90 piezas-18pz por caja",
+      "_id": {
+        "$oid": "63d9a344121c025b0d96c520"
+      }
+    }
+  ],
+  "numberOfItems": 1,
+  "subtotal": 1500,
+  "tax": {
+    "percent": "0.16",
+    "amount": "1071",
+    "_id": {
+      "$oid": "63d9a344121c025b0d96c521"
+    }
+  },
+  "total": 1275,
+  "paidAt": "31 de enero de 2023",
+  "transactionId": "pi_3MWTC2BVNCfvPFNH0xhvBZFL",
+  "orderStatus": "preparando pedido para ser enviado",
+  "provider": "stripe",
+  "discounts": [
+    {
+      "code": "andres15",
+      "quantity": 0,
+      "percentaje": 15,
+      "_id": {
+        "$oid": "63d9a344121c025b0d96c522"
+      }
+    }
+  ],
+  "shippingPrice": 0
+},{
+  "_id": {
+    "$oid": "63e7385fb04d74292137449e"
+  },
+  "orderNumber": "T77912425",
+  "clientId": {
+    "$oid": "63e7385cb04d742921374495"
+  },
+  "shippingAddress": {
+    "firstName": "ariel ",
+    "lastName": "guel garcía ",
+    "address": "privada miguel alessio robles #1207",
+    "address2": "casa ",
+    "city": "castaños ",
+    "estate": "coahuila ",
+    "country": "méxico",
+    "zip": "25870",
+    "phone": "8661347684",
+    "_id": {
+      "$oid": "63e7385fb04d74292137449f"
+    }
+  },
+  "billingAddress": {
+    "firstName": "ariel ",
+    "lastName": "guel garcía ",
+    "address": "privada miguel alessio robles #1207",
+    "address2": "casa ",
+    "city": "castaños ",
+    "estate": "coahuila ",
+    "country": "méxico",
+    "zip": "25870",
+    "phone": "8661347684",
+    "_id": {
+      "$oid": "63e7385fb04d7429213744a0"
+    }
+  },
+  "products": [
+    {
+      "title": "distribuidor pack",
+      "variantName": ".",
+      "slug": "distribuidor_pack",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/distribuidor_pack_._1667930517363.png",
+      "price": 750,
+      "quantity": 1,
+      "description": "5 cajas-90 piezas-18pz por caja",
+      "_id": {
+        "$oid": "63e7385fb04d7429213744a1"
+      }
+    }
+  ],
+  "numberOfItems": 1,
+  "subtotal": 750,
+  "tax": {
+    "percent": "0.16",
+    "amount": "535.5",
+    "_id": {
+      "$oid": "63e7385fb04d7429213744a2"
+    }
+  },
+  "total": 637.5,
+  "paidAt": "11 de febrero de 2023",
+  "transactionId": "pi_3MaCl7BVNCfvPFNH26ufl2V8",
+  "orderStatus": "preparando pedido para ser enviado",
+  "provider": "stripe",
+  "discounts": [
+    {
+      "code": "andres15",
+      "quantity": 0,
+      "percentaje": 15,
+      "_id": {
+        "$oid": "63e7385fb04d7429213744a3"
+      }
+    }
+  ],
+  "shippingPrice": 0
+},{
+  "_id": {
+    "$oid": "63eb375e3e41a6321733b13f"
+  },
+  "orderNumber": "T36794663",
+  "clientId": {
+    "$oid": "63eb375d3e41a6321733b137"
+  },
+  "shippingAddress": {
+    "firstName": "david neftalí",
+    "lastName": "zarzoza carranza",
+    "address": "manzanilla #240 colonia palma de romero",
+    "address2": "casa",
+    "city": "matehuala",
+    "estate": "san luis potosí",
+    "country": "méxico",
+    "zip": "78730",
+    "phone": "4881226147",
+    "_id": {
+      "$oid": "63eb375e3e41a6321733b140"
+    }
+  },
+  "billingAddress": {
+    "firstName": "david neftalí",
+    "lastName": "zarzoza carranza",
+    "address": "manzanilla #240 colonia palma de romero",
+    "address2": "casa",
+    "city": "matehuala",
+    "estate": "san luis potosí",
+    "country": "méxico",
+    "zip": "78730",
+    "phone": "4881226147",
+    "_id": {
+      "$oid": "63eb375e3e41a6321733b141"
+    }
+  },
+  "products": [
+    {
+      "title": "distribuidor pack",
+      "variantName": ".",
+      "slug": "distribuidor_pack",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/distribuidor_pack_._1667930517363.png",
+      "price": 750,
+      "quantity": 2,
+      "description": "5 cajas-90 piezas-18pz por caja",
+      "_id": {
+        "$oid": "63eb375e3e41a6321733b142"
+      }
+    }
+  ],
+  "numberOfItems": 1,
+  "subtotal": 1500,
+  "tax": {
+    "percent": "0.16",
+    "amount": "1071",
+    "_id": {
+      "$oid": "63eb375e3e41a6321733b143"
+    }
+  },
+  "total": 1275,
+  "paidAt": "14 de febrero de 2023",
+  "transactionId": "89D17751D1386440F",
+  "orderStatus": "preparando pedido para ser enviado",
+  "provider": "paypal",
+  "discounts": [
+    {
+      "code": "andres15",
+      "quantity": 0,
+      "percentaje": 15,
+      "_id": {
+        "$oid": "63eb375e3e41a6321733b144"
+      }
+    }
+  ],
+  "shippingPrice": 0
+},{
+  "_id": {
+    "$oid": "63f3f5522fd45899fe364013"
+  },
+  "orderNumber": "T96201367",
+  "clientId": {
+    "$oid": "63f3f5502fd45899fe36400b"
+  },
+  "shippingAddress": {
+    "firstName": "hector",
+    "lastName": "castro",
+    "address": "santa jacinta 756",
+    "address2": "cumbres san patricio",
+    "city": "monterrey",
+    "estate": "nuevo león",
+    "country": "méxico",
+    "zip": "66035",
+    "phone": "8123649163",
+    "_id": {
+      "$oid": "63f3f5522fd45899fe364014"
+    }
+  },
+  "billingAddress": {
+    "firstName": "hector",
+    "lastName": "castro",
+    "address": "santa jacinta 756",
+    "address2": "cumbres san patricio",
+    "city": "monterrey",
+    "estate": "nuevo león",
+    "country": "méxico",
+    "zip": "66035",
+    "phone": "8123649163",
+    "_id": {
+      "$oid": "63f3f5522fd45899fe364015"
+    }
+  },
+  "products": [
+    {
+      "title": "chocolate amargo premium",
+      "variantName": "18g",
+      "slug": "chocolate_amargo_premium",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/chocolate_amargo_premium_18g_1663627587138.png",
+      "price": 270,
+      "quantity": 1,
+      "description": "Caja con 18 barras",
+      "_id": {
+        "$oid": "63f3f5522fd45899fe364016"
+      }
+    }
+  ],
+  "numberOfItems": 1,
+  "subtotal": 270,
+  "tax": {
+    "percent": "0.16",
+    "amount": "251.57999999999998",
+    "_id": {
+      "$oid": "63f3f5522fd45899fe364017"
+    }
+  },
+  "total": 229.5,
+  "paidAt": "20 de febrero de 2023",
+  "transactionId": "pi_3MdhvgBVNCfvPFNH1LMp0grf",
+  "orderStatus": "preparando pedido para ser enviado",
+  "provider": "stripe",
+  "discounts": [
+    {
+      "code": "andres15",
+      "quantity": 0,
+      "percentaje": 15,
+      "_id": {
+        "$oid": "63f3f5522fd45899fe364018"
+      }
+    }
+  ],
+  "shippingPrice": 70
+},{
+  "_id": {
+    "$oid": "63f3fff887e8af84ac209301"
+  },
+  "orderNumber": "T6484262",
+  "clientId": {
+    "$oid": "63f3fff887e8af84ac2092fb"
+  },
+  "shippingAddress": {
+    "firstName": "juan pablo ",
+    "lastName": "nuñez monzonis",
+    "address": "calle bogota #2657",
+    "address2": "",
+    "city": "guadalajara",
+    "estate": "jal.",
+    "country": "méxico",
+    "zip": "44630",
+    "phone": "3334537375",
+    "_id": {
+      "$oid": "63f3fff887e8af84ac209302"
+    }
+  },
+  "billingAddress": {
+    "firstName": "juan pablo ",
+    "lastName": "nuñez monzonis",
+    "address": "calle bogota #2657",
+    "address2": "",
+    "city": "guadalajara",
+    "estate": "jal.",
+    "country": "méxico",
+    "zip": "44630",
+    "phone": "3334537375",
+    "_id": {
+      "$oid": "63f3fff887e8af84ac209303"
+    }
+  },
+  "products": [
+    {
+      "title": "chocolate blanco artesanal",
+      "variantName": "18g",
+      "slug": "chocolate_blanco_artesanal",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/chocolate_blanco_artesanal_18g_1663629800710.png",
+      "price": 270,
+      "quantity": 1,
+      "description": "Caja con 18 barras",
+      "_id": {
+        "$oid": "63f3fff887e8af84ac209304"
+      }
+    }
+  ],
+  "numberOfItems": 1,
+  "subtotal": 270,
+  "tax": {
+    "percent": "0.16",
+    "amount": "251.57999999999998",
+    "_id": {
+      "$oid": "63f3fff887e8af84ac209305"
+    }
+  },
+  "total": 229.5,
+  "paidAt": "20 de febrero de 2023",
+  "transactionId": "91W33460PF368932P",
+  "orderStatus": "preparando pedido para ser enviado",
+  "provider": "paypal",
+  "discounts": [
+    {
+      "code": "andres15",
+      "quantity": 0,
+      "percentaje": 15,
+      "_id": {
+        "$oid": "63f3fff887e8af84ac209306"
+      }
+    }
+  ],
+  "shippingPrice": 70
+},{
+  "_id": {
+    "$oid": "63f4090487e8af84ac209437"
+  },
+  "orderNumber": "T51279784",
+  "clientId": {
+    "$oid": "63f4090287e8af84ac209431"
+  },
+  "shippingAddress": {
+    "firstName": "samuel ",
+    "lastName": "hernández bolivar ",
+    "address": "sandinistas 1019",
+    "address2": "casa",
+    "city": "chihuahua ",
+    "estate": "chihuahua ",
+    "country": "méxico",
+    "zip": "31126",
+    "phone": "6144752304",
+    "_id": {
+      "$oid": "63f4090487e8af84ac209438"
+    }
+  },
+  "billingAddress": {
+    "firstName": "samuel ",
+    "lastName": "hernández bolivar ",
+    "address": "sandinistas 1019",
+    "address2": "casa",
+    "city": "chihuahua ",
+    "estate": "chihuahua ",
+    "country": "méxico",
+    "zip": "31126",
+    "phone": "6144752304",
+    "_id": {
+      "$oid": "63f4090487e8af84ac209439"
+    }
+  },
+  "products": [
+    {
+      "title": "chocolate amargo premium",
+      "variantName": "18g",
+      "slug": "chocolate_amargo_premium",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/chocolate_amargo_premium_18g_1663627587138.png",
+      "price": 270,
+      "quantity": 1,
+      "description": "Caja con 18 barras",
+      "_id": {
+        "$oid": "63f4090487e8af84ac20943a"
+      }
+    }
+  ],
+  "numberOfItems": 1,
+  "subtotal": 270,
+  "tax": {
+    "percent": "0.16",
+    "amount": "251.57999999999998",
+    "_id": {
+      "$oid": "63f4090487e8af84ac20943b"
+    }
+  },
+  "total": 229.5,
+  "paidAt": "20 de febrero de 2023",
+  "transactionId": "pi_3MdjF0BVNCfvPFNH28GS2K54",
+  "orderStatus": "preparando pedido para ser enviado",
+  "provider": "stripe",
+  "discounts": [
+    {
+      "code": "andres15",
+      "quantity": 0,
+      "percentaje": 15,
+      "_id": {
+        "$oid": "63f4090487e8af84ac20943c"
+      }
+    }
+  ],
+  "shippingPrice": 70
+},{
+  "_id": {
+    "$oid": "63f437af9cf4f9720b5ad170"
+  },
+  "orderNumber": "T75478646",
+  "clientId": {
+    "$oid": "63f437af9cf4f9720b5ad16b"
+  },
+  "shippingAddress": {
+    "firstName": "daniel",
+    "lastName": "muñoz pizarro",
+    "address": "cedros 4000 paseo del laurel 1b",
+    "address2": "cedros 4000",
+    "city": "toluca",
+    "estate": "méxico",
+    "country": "méxico",
+    "zip": "52004",
+    "phone": "9511698859",
+    "_id": {
+      "$oid": "63f437af9cf4f9720b5ad171"
+    }
+  },
+  "billingAddress": {
+    "firstName": "daniel",
+    "lastName": "muñoz pizarro",
+    "address": "cedros 4000 paseo del laurel 1b",
+    "address2": "cedros 4000",
+    "city": "toluca",
+    "estate": "méxico",
+    "country": "méxico",
+    "zip": "52004",
+    "phone": "9511698859",
+    "_id": {
+      "$oid": "63f437af9cf4f9720b5ad172"
+    }
+  },
+  "products": [
+    {
+      "title": "chocolate amargo premium",
+      "variantName": "18g",
+      "slug": "chocolate_amargo_premium",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/chocolate_amargo_premium_18g_1663627587138.png",
+      "price": 270,
+      "quantity": 1,
+      "description": "Caja con 18 barras",
+      "_id": {
+        "$oid": "63f437af9cf4f9720b5ad173"
+      }
+    },
+    {
+      "title": "chocolate de leche premium",
+      "variantName": "18g",
+      "slug": "chocolate_de-leche_premium",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/chocolate_de-leche_premium_18g_1663628487047.png",
+      "price": 270,
+      "quantity": 1,
+      "description": "Caja con 18 barras",
+      "_id": {
+        "$oid": "63f437af9cf4f9720b5ad174"
+      }
+    },
+    {
+      "title": "chocolate amargo 73% cacao",
+      "variantName": "18g",
+      "slug": "chocolate_amargo_73-cacao",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/chocolate_amargo_73-cacao_18g_1663629227098.png",
+      "price": 270,
+      "quantity": 1,
+      "description": "Caja con 18 barras",
+      "_id": {
+        "$oid": "63f437af9cf4f9720b5ad175"
+      }
+    }
+  ],
+  "numberOfItems": 3,
+  "subtotal": 810,
+  "tax": {
+    "percent": "0.16",
+    "amount": "637.14",
+    "_id": {
+      "$oid": "63f437af9cf4f9720b5ad176"
+    }
+  },
+  "total": 688.5,
+  "paidAt": "21 de febrero de 2023",
+  "transactionId": "82S30956FK712263K",
+  "orderStatus": "preparando pedido para ser enviado",
+  "provider": "paypal",
+  "discounts": [
+    {
+      "code": "andres15",
+      "quantity": 0,
+      "percentaje": 15,
+      "_id": {
+        "$oid": "63f437af9cf4f9720b5ad177"
+      }
+    }
+  ],
+  "shippingPrice": 70
+},{
+  "_id": {
+    "$oid": "63f505b939ae4e50fef144fb"
+  },
+  "orderNumber": "T9704496",
+  "clientId": {
+    "$oid": "63f505b639ae4e50fef144f7"
+  },
+  "shippingAddress": {
+    "firstName": "naidely",
+    "lastName": "rosendo madora",
+    "address": "atoyac 20, la paz",
+    "address2": "oficina",
+    "city": "puebla",
+    "estate": "pue.",
+    "country": "méxico",
+    "zip": "72160",
+    "phone": "2431061348",
+    "_id": {
+      "$oid": "63f505b939ae4e50fef144fc"
+    }
+  },
+  "billingAddress": {
+    "firstName": "naidely",
+    "lastName": "rosendo madora",
+    "address": "atoyac 20, la paz",
+    "address2": "oficina",
+    "city": "puebla",
+    "estate": "pue.",
+    "country": "méxico",
+    "zip": "72160",
+    "phone": "2431061348",
+    "_id": {
+      "$oid": "63f505b939ae4e50fef144fd"
+    }
+  },
+  "products": [
+    {
+      "title": "chocolate amargo premium",
+      "variantName": "18g",
+      "slug": "chocolate_amargo_premium",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/chocolate_amargo_premium_18g_1663627587138.png",
+      "price": 270,
+      "quantity": 1,
+      "description": "Caja con 18 barras",
+      "_id": {
+        "$oid": "63f505b939ae4e50fef144fe"
+      }
+    }
+  ],
+  "numberOfItems": 1,
+  "subtotal": 270,
+  "tax": {
+    "percent": "0.16",
+    "amount": "251.57999999999998",
+    "_id": {
+      "$oid": "63f505b939ae4e50fef144ff"
+    }
+  },
+  "total": 229.5,
+  "paidAt": "21 de febrero de 2023",
+  "transactionId": "pi_3Me04RBVNCfvPFNH1BjJFi0t",
+  "orderStatus": "preparando pedido para ser enviado",
+  "provider": "stripe",
+  "discounts": [
+    {
+      "code": "andres15",
+      "quantity": 0,
+      "percentaje": 15,
+      "_id": {
+        "$oid": "63f505b939ae4e50fef14500"
+      }
+    }
+  ],
+  "shippingPrice": 70
+},{
+  "_id": {
+    "$oid": "63f51bbea7c2cf0b8e602159"
+  },
+  "orderNumber": "T72226591",
+  "clientId": {
+    "$oid": "63f51ba4a7c2cf0b8e602122"
+  },
+  "shippingAddress": {
+    "firstName": "luis",
+    "lastName": "jimenez",
+    "address": "san antonio del mar ",
+    "address2": "farallon ",
+    "city": "rosarito ",
+    "estate": "tijuana ",
+    "country": "méxico",
+    "zip": "22560",
+    "phone": "6611072056",
+    "_id": {
+      "$oid": "63f51bbea7c2cf0b8e60215a"
+    }
+  },
+  "billingAddress": {
+    "firstName": "luis",
+    "lastName": "jimenez",
+    "address": "san antonio del mar ",
+    "address2": "farallon ",
+    "city": "rosarito ",
+    "estate": "tijuana ",
+    "country": "méxico",
+    "zip": "22560",
+    "phone": "6611072056",
+    "_id": {
+      "$oid": "63f51bbea7c2cf0b8e60215b"
+    }
+  },
+  "products": [
+    {
+      "title": "chocolate amargo premium",
+      "variantName": "18g",
+      "slug": "chocolate_amargo_premium",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/chocolate_amargo_premium_18g_1663627587138.png",
+      "price": 270,
+      "quantity": 1,
+      "description": "Caja con 18 barras",
+      "_id": {
+        "$oid": "63f51bbea7c2cf0b8e60215c"
+      }
+    }
+  ],
+  "numberOfItems": 1,
+  "subtotal": 270,
+  "tax": {
+    "percent": "0.16",
+    "amount": "251.57999999999998",
+    "_id": {
+      "$oid": "63f51bbea7c2cf0b8e60215d"
+    }
+  },
+  "total": 229.5,
+  "paidAt": "21 de febrero de 2023",
+  "transactionId": "pi_3Me1XMBVNCfvPFNH2JAQ2kWd",
+  "orderStatus": "preparando pedido para ser enviado",
+  "provider": "stripe",
+  "discounts": [
+    {
+      "code": "andres15",
+      "quantity": 0,
+      "percentaje": 15,
+      "_id": {
+        "$oid": "63f51bbea7c2cf0b8e60215e"
+      }
+    }
+  ],
+  "shippingPrice": 70
+},{
+  "_id": {
+    "$oid": "63f548219fea2115996a377f"
+  },
+  "orderNumber": "T88982028",
+  "clientId": {
+    "$oid": "63f5481f9fea2115996a3778"
+  },
+  "shippingAddress": {
+    "firstName": "angel ian ",
+    "lastName": "celaya miranda ",
+    "address": "las lomas, virgilio #9 ",
+    "address2": "casa",
+    "city": "hermosillo ",
+    "estate": "sonora ",
+    "country": "méxico",
+    "zip": "83293",
+    "phone": "6624205823",
+    "_id": {
+      "$oid": "63f548219fea2115996a3780"
+    }
+  },
+  "billingAddress": {
+    "firstName": "angel ian ",
+    "lastName": "celaya miranda ",
+    "address": "las lomas, virgilio #9 ",
+    "address2": "casa",
+    "city": "hermosillo ",
+    "estate": "sonora ",
+    "country": "méxico",
+    "zip": "83293",
+    "phone": "6624205823",
+    "_id": {
+      "$oid": "63f548219fea2115996a3781"
+    }
+  },
+  "products": [
+    {
+      "title": "chocolate amargo premium",
+      "variantName": "18g",
+      "slug": "chocolate_amargo_premium",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/chocolate_amargo_premium_18g_1663627587138.png",
+      "price": 270,
+      "quantity": 1,
+      "description": "Caja con 18 barras",
+      "_id": {
+        "$oid": "63f548219fea2115996a3782"
+      }
+    }
+  ],
+  "numberOfItems": 1,
+  "subtotal": 270,
+  "tax": {
+    "percent": "0.16",
+    "amount": "251.57999999999998",
+    "_id": {
+      "$oid": "63f548219fea2115996a3783"
+    }
+  },
+  "total": 229.5,
+  "paidAt": "21 de febrero de 2023",
+  "transactionId": "pi_3Me4UdBVNCfvPFNH2JWmJf6K",
+  "orderStatus": "preparando pedido para ser enviado",
+  "provider": "stripe",
+  "discounts": [
+    {
+      "code": "andres15",
+      "quantity": 0,
+      "percentaje": 15,
+      "_id": {
+        "$oid": "63f548219fea2115996a3784"
+      }
+    }
+  ],
+  "shippingPrice": 70
+},{
+  "_id": {
+    "$oid": "63f5d0bc416337fc3e3fa2a2"
+  },
+  "orderNumber": "T6055952",
+  "clientId": {
+    "$oid": "63f5d0b9416337fc3e3fa29d"
+  },
+  "shippingAddress": {
+    "firstName": "erick raul",
+    "lastName": "mendez gonzalez ",
+    "address": "fracc. hacienda el cortijo, estribo #230",
+    "address2": "#230",
+    "city": "saltillo",
+    "estate": "coahuila",
+    "country": "méxico",
+    "zip": "25093",
+    "phone": "8442990367",
+    "_id": {
+      "$oid": "63f5d0bc416337fc3e3fa2a3"
+    }
+  },
+  "billingAddress": {
+    "firstName": "erick raul",
+    "lastName": "mendez gonzalez ",
+    "address": "fracc. hacienda el cortijo, estribo #230",
+    "address2": "#230",
+    "city": "saltillo",
+    "estate": "coahuila",
+    "country": "méxico",
+    "zip": "25093",
+    "phone": "8442990367",
+    "_id": {
+      "$oid": "63f5d0bc416337fc3e3fa2a4"
+    }
+  },
+  "products": [
+    {
+      "title": "chocolate de leche premium",
+      "variantName": "18g",
+      "slug": "chocolate_de-leche_premium",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/chocolate_de-leche_premium_18g_1663628487047.png",
+      "price": 270,
+      "quantity": 1,
+      "description": "Caja con 18 barras",
+      "_id": {
+        "$oid": "63f5d0bc416337fc3e3fa2a5"
+      }
+    },
+    {
+      "title": "chocolate blanco artesanal",
+      "variantName": "18g",
+      "slug": "chocolate_blanco_artesanal",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/chocolate_blanco_artesanal_18g_1663629800710.png",
+      "price": 270,
+      "quantity": 1,
+      "description": "Caja con 18 barras",
+      "_id": {
+        "$oid": "63f5d0bc416337fc3e3fa2a6"
+      }
+    }
+  ],
+  "numberOfItems": 2,
+  "subtotal": 540,
+  "tax": {
+    "percent": "0.16",
+    "amount": "444.36",
+    "_id": {
+      "$oid": "63f5d0bc416337fc3e3fa2a7"
+    }
+  },
+  "total": 459,
+  "paidAt": "22 de febrero de 2023",
+  "transactionId": "pi_3MeDafBVNCfvPFNH0IsJDqYU",
+  "orderStatus": "preparando pedido para ser enviado",
+  "provider": "stripe",
+  "discounts": [
+    {
+      "code": "andres15",
+      "quantity": 0,
+      "percentaje": 15,
+      "_id": {
+        "$oid": "63f5d0bc416337fc3e3fa2a8"
+      }
+    }
+  ],
+  "shippingPrice": 70
+},{
+  "_id": {
+    "$oid": "63fa869aa8ac15b7bc56c49d"
+  },
+  "orderNumber": "T62273676",
+  "clientId": {
+    "$oid": "63fa869aa8ac15b7bc56c494"
+  },
+  "shippingAddress": {
+    "firstName": "david ",
+    "lastName": "herrera ",
+    "address": "ocampo 918 zona centro",
+    "address2": "súper bodies gym",
+    "city": "el mande",
+    "estate": "tamaulipas",
+    "country": "méxico",
+    "zip": "89800",
+    "phone": "8311136421",
+    "_id": {
+      "$oid": "63fa869aa8ac15b7bc56c49e"
+    }
+  },
+  "billingAddress": {
+    "firstName": "david ",
+    "lastName": "herrera ",
+    "address": "ocampo 918 zona centro",
+    "address2": "súper bodies gym",
+    "city": "el mande",
+    "estate": "tamaulipas",
+    "country": "méxico",
+    "zip": "89800",
+    "phone": "8311136421",
+    "_id": {
+      "$oid": "63fa869aa8ac15b7bc56c49f"
+    }
+  },
+  "products": [
+    {
+      "title": "distribuidor pack",
+      "variantName": ".",
+      "slug": "distribuidor_pack",
+      "image": "https://langavi-product-pictures.s3.amazonaws.com/distribuidor_pack_._1667930517363.png",
+      "price": 750,
+      "quantity": 1,
+      "description": "5 cajas-90 piezas-18pz por caja",
+      "_id": {
+        "$oid": "63fa869aa8ac15b7bc56c4a0"
+      }
+    }
+  ],
+  "numberOfItems": 1,
+  "subtotal": 750,
+  "tax": {
+    "percent": "0.16",
+    "amount": "630",
+    "_id": {
+      "$oid": "63fa869aa8ac15b7bc56c4a1"
+    }
+  },
+  "total": 750,
+  "paidAt": "25 de febrero de 2023",
+  "transactionId": "8YA63864HV2078539",
+  "orderStatus": "preparando pedido para ser enviado",
+  "provider": "paypal",
+  "discounts": [],
+  "shippingPrice": 0
+}]

@@ -3,156 +3,17 @@
 @use "@/styles/abstracts/variables.scss";
 @import "@/styles/animations.scss";
 
-// .title {
-//     display: flex;
-//     align-items: center;
-//     gap: 2rem;
-//     margin: 0.5rem 0 2.5rem 0;
-
-//     @include mixins.respond(phone) {
-//         padding: 0;
-//         margin-top: 2rem;
-//         h2 {
-//             display: none;
-//             position: relative;
-//         }
-//         justify-content: center;
-//     }
-
-//     .showSidebarMobile & {
-//         justify-content: initial;
-
-//         h2 {
-//             display: inline-block;
-//             animation: slideInRight 0.3s ease-in-out forwards;
-//         }
-//     }
-
-//     h2 {
-//         font-size: variables.$font-size-text;
-//         font-weight: 700;
-//     }
-// }
-
-// .container {
-//     padding: 2rem;
-//     min-width: 6.5rem;
-//     height: 100%;
-//     position: fixed;
-//     background-color: colors.$white;
-//     transition: all 0.3s ease-in-out;
-//     @include mixins.grayBorder;
-//     @include mixins.respond(phone) {
-//         width: 6.5rem;
-//         padding: 0;
-//     }
-
-//     &.showSidebarMobile {
-//         z-index: 100;
-//         max-width: 100%;
-//         width: 80%;
-//         padding: 0 2rem;
-//         @include mixins.grayBorder;
-//     }
-// }
-
-// .sidebarItems {
-//     display: flex;
-//     flex-direction: column;
-//     gap: 0.5rem;
-//     margin-bottom: 1.5rem;
-// }
-
-// .sidebarItem {
-//     display: flex;
-//     align-items: center;
-//     font-size: variables.$font-size-text;
-//     padding: 1rem;
-//     gap: 1rem;
-//     transition: all 0.3s ease-in-out;
-//     @include mixins.respond(phone) {
-//         justify-content: center;
-//         padding: 1rem;
-
-//     }
-
-//     .showSidebarMobile & {
-//         justify-content: initial;
-//         p {
-//             display: inline-block;
-//             animation: slideInRight 0.3s ease-in-out forwards;
-//         }
-//     }
-
-//     svg {
-//         transition: all 0.3s ease-in-out;
-//         width: 1.5rem;
-//         height: 1.5rem;
-//         stroke: colors.$black;
-
-//         @include mixins.respond(phone) {
-//             width: 2.5rem;
-//             height: 2.5rem;
-//         }
-//     }
-
-//     &:hover {
-//         background-color: colors.$secondary-light;
-//         border-radius: 1rem;
-//         color: colors.$primary;
-//         svg {
-//             stroke: colors.$primary;
-//         }
-//     }
-// }
-
-// .sidebarItemActive {
-//     background-color: colors.$secondary-light;
-//     border-radius: 1rem;
-//     color: colors.$primary;
-//     svg {
-//         fill: colors.$primary;
-//         stroke: colors.$primary;
-//         color: colors.$primary;
-//     }
-// }
-
-// .rightArrow {
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     margin-top: 1rem;
-//     width: 2.5rem;
-//     height: 2.5rem;
-//     margin: 2rem auto;
-//     border-radius: 50%;
-//     background-color: colors.$secondary-light;
-//     svg {
-//         width: 1.5rem;
-//         height: 1.5rem;
-//         stroke: colors.$black;
-//         transition: all 0.3s ease-in-out;
-//         .showSidebarMobile & {
-//             transform: rotate(180deg);
-//         }
-//     }
-
-//     @include mixins.respond(from-phone) {
-//         display: none;
-//     }
-// }
-
 .container {
     background-color: colors.$white;
     height: 100%;
     padding: 1rem 0;
     transition: width 0.3s ease-in-out;
     width: 4rem;
-
-    // @include mixins.grayBorder;
-
     position: fixed;
     z-index: 100;
+
+    border-right: 2px solid colors.$bc;
+
     &.showSidebarMobile {
         width: 80%;
     }
@@ -177,7 +38,7 @@
         font-size: variables.$font-size-text;
         font-weight: 700;
         opacity: 0;
-        transform: translateX(-10%);
+        transform: translateX(-15%);
         transition: transform 0.4s ease-in-out, opacity 0.2s ease-in-out;
     }
 
@@ -197,9 +58,9 @@
             margin-left: 0;
             margin: 0;
         }
-        min-width: 15vw;
         gap: 2rem;
-        span { 
+        min-width: 13vw;
+        span {
             width: 4rem;
             height: 4rem;
         }
@@ -225,11 +86,14 @@
     align-items: center;
     padding: 0.75rem 0;
 
+    cursor: pointer;
+
     transition: all 0.3s ease-in-out;
     p {
         font-size: variables.$font-size-text;
         position: absolute;
         opacity: 0;
+        transform: translateX(1rem);
         transition: transform 0.4s ease-in-out, opacity 0.2s ease-in-out;
     }
 
@@ -238,6 +102,8 @@
         width: 1.5rem;
         height: 1.5rem;
         margin: 0 0.75rem;
+        background-color: colors.$white;
+        z-index: 100;
         stroke: colors.$black;
     }
 
@@ -252,6 +118,7 @@
         svg {
             width: 2rem;
             height: 2rem;
+            background-color: transparent;
         }
     }
 
@@ -277,9 +144,8 @@
     border-radius: 1rem;
     color: colors.$primary;
     svg {
-        fill: colors.$primary;
         stroke: colors.$primary;
-        color: colors.$primary;
+        background-color: colors.$secondary-light;
     }
 }
 
