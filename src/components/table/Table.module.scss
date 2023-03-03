@@ -1,0 +1,49 @@
+@use "../../styles/colors";
+
+.table {
+    min-width: 20rem;
+    display: flex;
+    flex: 1;
+    padding: 1rem;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.header {
+    p {
+        font-weight: 700;
+    }
+    display: flex;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid colors.$bc;
+    border-top: 1px solid colors.$bc;
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: green;
+}
+
+.cell {
+    display: flex;
+    height: 5rem;
+    align-items: center;
+    img {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    cursor: pointer;
+    border-bottom: 1px solid colors.$bc;
+}
+
+.hover {
+    background-color: colors.$secondary-light;
+    transition: all 0.3s ease-in-out;
+}

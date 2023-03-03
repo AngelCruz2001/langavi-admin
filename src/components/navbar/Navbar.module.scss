@@ -1,6 +1,11 @@
-
-.navbar { 
-    background-color: green;
+@use "@/styles/colors.scss";
+@use "@/styles/abstracts/mixins.scss";
+.navbar {
     display: flex;
-    flex: 0 0 100%;
+    height: 3rem;
+    padding: 2rem;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: colors.$white;
+    border-bottom: 2px solid colors.$bc;
 }

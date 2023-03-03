@@ -1,3 +1,11 @@
+@use "@/styles/colors.scss";
+
 .card {
-    background-color: red;
+    background-color: colors.$white;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    min-height: 10rem;
+}
+
+.cardSection {
 }

@@ -305,6 +305,5 @@
 }
 
 @mixin grayBorder {
-  border: 1px solid $bc;
-  border-right-width: 1px;
+  border-right: 2px solid colors.$bc;
 }

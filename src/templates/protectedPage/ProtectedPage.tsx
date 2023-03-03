@@ -17,9 +17,9 @@ export const ProtectedPage: React.FC<IProtectedPageProps> = ({ children }) => {
   return (
     <div className={styles.container}>
       <Sidebar />
-      <div className={styles.children}>
+      <div className={styles.content}>
         <Navbar />
-        {children}
+        <div className={styles.children}>{children}</div>
       </div>
     </div>
   );
