@@ -11,7 +11,7 @@ import { Fragment } from "react";
 import { IOrders } from "@/interfaces/Orders.interface";
 import { useRouter } from "next/router";
 
-const orders: NextPage = () => {
+const Orders: NextPage = () => {
   const router = useRouter();
 
   const orders: IOrders[] = [
@@ -184,4 +184,4 @@ const orders: NextPage = () => {
   );
 };
 
-export default orders;
+export default Orders;
