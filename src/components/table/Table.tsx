@@ -7,13 +7,24 @@ interface ITableProps {
   children: ReactElement<any>;
   proportion: string[];
   headers: string[];
+  centerRows: boolean[];
+}
+
+interface ITableRowProps {
+  children: React.ReactNode;
+  onClick?: (e: any) => void;
 }
 
 interface ITableComposition {
   children: React.ReactNode;
 }
 
-export const Table = ({ children, headers, proportion }: ITableProps) => {
+export const Table = ({
+  children,
+  headers,
+  proportion,
+  centerRows,
+}: ITableProps) => {
   const arrayChildren =
     children.props && Children.toArray(children.props.children);
 
@@ -27,6 +38,7 @@ export const Table = ({ children, headers, proportion }: ITableProps) => {
   };
 
   const handleLeave = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    // Quit the hover on the line, the row the one with the same id
     const id = e.currentTarget.id;
     const cells = document.querySelectorAll(`#${id}`);
     cells.forEach((cell) => {
@@ -36,44 +48,61 @@ export const Table = ({ children, headers, proportion }: ITableProps) => {
 
   return (
     <div className={styles.table}>
-      {headers.map((header, indexHeader) => (
-        <div
-          key={header}
-          className={styles.content}
-          style={{
-            width: proportion[indexHeader],
-          }}
-        >
-          <div className={styles.header}>
-            <p>{header}</p>
-          </div>
-
-          {arrayChildren.map((child: ReactElement<any>, index: number) => (
+      <div className={styles.content}>
+        {headers.map((header, indexHeader) => (
+          <div
+            key={header}
+            className={styles.column}
+            style={{
+              width: proportion[indexHeader],
+            }}
+          >
             <div
-              key={`${uuid()}`}
-              onMouseOver={handleOver}
-              onMouseLeave={handleLeave}
-              id={`child-${index}-cell`}
-              className={styles.cell}
+              className={styles.header}
+              style={{
+                justifyContent: centerRows[indexHeader]
+                  ? "center"
+                  : "flex-start",
+              }}
             >
-              {Children.toArray(child.props.children)[indexHeader]}
+              <p>{header}</p>
             </div>
-          ))}
-        </div>
-      ))}
+            {arrayChildren.map((child: ReactElement<any>, index: number) => (
+              <div
+                key={`${uuid()}`}
+                onMouseOver={handleOver}
+                onMouseLeave={handleLeave}
+                id={`child-${index}-cell`}
+                className={styles.cell}
+                style={{
+                  justifyContent: centerRows[indexHeader]
+                    ? "center"
+                    : "flex-start",
+                }}
+                {...child.props}
+              >
+                {React.cloneElement(child.props.children[indexHeader], {
+                  id: `child-${index}-cell`,
+                  ...child.props.children[indexHeader].props,
+                })}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
 
-const Row = ({ children, ...props }: ITableComposition) => {
-  return <div className={styles.row}>{children}</div>;
-};
-const Cell = ({ children, ...props }: ITableComposition) => {
+const Row = ({ children, ...props }: ITableRowProps) => {
   return (
-    <div className={styles.cell} {...props}>
+    <div className={styles.row} {...props}>
       {children}
     </div>
   );
+};
+const Cell = ({ children, ...props }: ITableComposition) => {
+  return <>{children}</>;
 };
 
 Table.Row = Row;

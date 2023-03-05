@@ -14,7 +14,7 @@ export interface IOrders {
     paidAt:          string;
     transactionId:   string;
     orderStatus:     string;
-    provider:        Provider;
+    provider:        "paypal" | "stripe";
     discounts:       Discount[];
     shippingPrice:   number;
 }
@@ -30,15 +30,12 @@ export interface IngAddress {
     address2:  string;
     city:      string;
     estate:    string;
-    country:   Country;
+    country:   string;
     zip:       string;
     phone:     string;
     _id:       ID;
 }
 
-export enum Country {
-    México = "méxico",
-}
 
 export interface Discount {
     code:       Code;
@@ -53,47 +50,14 @@ export enum Code {
 }
 
 export interface Product {
-    title:       Title;
-    variantName: VariantName;
-    slug:        Slug;
+    title:       string;
+    variantName: string;
+    slug:        string;
     image:       string;
     price:       number;
     quantity:    number;
-    description: Description;
+    description: string;
     _id:         ID;
-}
-
-export enum Description {
-    CajaCon10Barras = "Caja con 10 barras",
-    CajaCon18Barras = "Caja con 18 barras",
-    The5Cajas90Piezas18PzPorCaja = "5 cajas-90 piezas-18pz por caja",
-}
-
-export enum Slug {
-    ChocolateAmargo73Cacao = "chocolate_amargo_73-cacao",
-    ChocolateAmargoPremium = "chocolate_amargo_premium",
-    ChocolateBlancoArtesanal = "chocolate_blanco_artesanal",
-    ChocolateDeLechePremium = "chocolate_de-leche_premium",
-    DistribuidorPack = "distribuidor_pack",
-}
-
-export enum Title {
-    ChocolateAmargo73Cacao = "chocolate amargo 73% cacao",
-    ChocolateAmargoPremium = "chocolate amargo premium",
-    ChocolateBlancoArtesanal = "chocolate blanco artesanal",
-    ChocolateDeLechePremium = "chocolate de leche premium",
-    DistribuidorPack = "distribuidor pack",
-}
-
-export enum VariantName {
-    Empty = ".",
-    The18G = "18g",
-    The35G = "35g",
-}
-
-export enum Provider {
-    Paypal = "paypal",
-    Stripe = "stripe",
 }
 
 export interface Tax {
