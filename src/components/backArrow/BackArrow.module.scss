@@ -1,0 +1,19 @@
+@use "@/styles/abstracts/variables.scss";
+@use "@/styles/colors.scss";
+
+.container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    svg {
+        width: 0.8rem;
+        height: 0.8rem;
+    }
+
+    span {
+        margin-left: 0.5rem;
+        font-size: 12px;
+        color: colors.$secondary;
+        font-weight: 600;
+    }
+}

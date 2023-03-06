@@ -1,15 +1,15 @@
-@use 'src/styles/colors.scss';
+@use "src/styles/colors.scss";
 
 .status {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    
+   
 }
 
 .statusCircle {
-    width: .6rem;
-    height: .6rem;
+    width: 0.6rem;
+    height: 0.6rem;
     border-radius: 50%;
 
     &.success {

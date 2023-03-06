@@ -10,5 +10,13 @@
 
 .cardSection {
     width: 100%;
+
     overflow: hidden;
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    position: relative;
 }
