@@ -4,3 +4,8 @@ export * from "./sidebar";
 export * from "./svg";
 export * from "./card";
 export * from "./table";
+export * from "./status";
+export * from "./paymentProcessor";
+export * from "./backArrow";
+export * from "./text";
+export * from "./details";

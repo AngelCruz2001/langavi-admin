@@ -1,0 +1,13 @@
+@use "@/styles/abstracts/variables.scss";
+@use "@/styles/colors.scss";
+
+.title {
+    font-size: variables.$font-size-title;
+    font-weight: 600;
+    color: colors.$black;
+}
+
+.description {
+    font-size: variables.$font-size-small;
+    color: colors.$secondary;
+}

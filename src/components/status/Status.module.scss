@@ -1,0 +1,22 @@
+@use "src/styles/colors.scss";
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+   
+}
+
+.statusCircle {
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+
+    &.success {
+        background-color: colors.$green-ok;
+    }
+
+    &.error {
+        background-color: colors.$error;
+    }
+}

@@ -19,8 +19,9 @@
     }
 
     @include mixins.respond(from-tab-port) {
-        width: auto;
-        position: relative;
+        width: 21rem;
+        // width: auto;
+        // position: relative;
         padding: 2rem;
     }
 }
@@ -135,6 +136,7 @@
         color: colors.$primary;
         svg {
             stroke: colors.$primary;
+            background-color: colors.$secondary-light;
         }
     }
 }

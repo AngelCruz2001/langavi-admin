@@ -1,21 +1,27 @@
 @use "../../styles/colors";
 
 .table {
-    min-width: 20rem;
     display: flex;
-    flex: 1;
-    padding: 1rem;
+    overflow: auto;
 }
 .content {
     display: flex;
+    width: 100%;
+    min-width: 35rem;
+}
+.column {
+    display: flex;
     flex-direction: column;
-    height: 100%;
+    justify-content: flex-end;
 }
 
 .header {
     p {
         font-weight: 700;
     }
+
+    width: 100%;
+
     display: flex;
     padding: 0.5rem 0;
     border-bottom: 1px solid colors.$bc;
@@ -23,20 +29,31 @@
     text-align: center;
 }
 
-.row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: green;
-}
+// .row {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-between;
+//     background-color: green;
+// }
 
 .cell {
     display: flex;
     height: 5rem;
+    width: 100%;
     align-items: center;
     img {
         width: 3rem;
         height: 3rem;
+    }
+
+    p {
+        display: -webkit-box;
+        overflow: hidden;
+        width: 100%;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2; /* number of lines to show */
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
     }
 
     cursor: pointer;
