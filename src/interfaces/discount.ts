@@ -1,4 +1,5 @@
 export interface IDiscount {
+  _id: string;
   code: string;
   quantity?: number;
   percentaje?: number;

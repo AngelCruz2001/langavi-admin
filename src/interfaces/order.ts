@@ -1,13 +1,18 @@
+import { ObjectValues } from ".";
 import { IOrderDiscount } from "./discount";
 import { PaymentMethods } from "./payments";
 import { IProductOrder } from "./products";
 
-export enum OrderStatus {
-  inProcess = "procesando pedido",
-  preparing = "preparando pedido para ser enviado",
-  sent = "enviado",
-  received = "entregado",
-}
+export const orderStatusType = {
+  inProcess: "procesando pedido",
+  preparing: "preparando pedido para ser enviado",
+  sent: "enviado",
+  received: "entregado",
+} as const;
+
+export const orderStatusTypeArray = Object.values(orderStatusType);
+
+export type OrderStatusType = ObjectValues<typeof orderStatusType>;
 
 export interface IAddress {
   firstName: string;
@@ -36,7 +41,7 @@ export interface IOrder {
   };
   paidAt: string;
   transactionId: string;
-  orderStatus: OrderStatus;
+  orderStatus: OrderStatusType;
   provider: PaymentMethods;
   discounts: IOrderDiscount[];
   orderNumber: string;
