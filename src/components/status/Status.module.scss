@@ -1,10 +1,12 @@
 @use "src/styles/colors.scss";
 
+.container {
+    position: relative;
+}
 .status {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-   
 }
 
 .statusCircle {
@@ -14,6 +16,10 @@
 
     &.success {
         background-color: colors.$green-ok;
+    }
+
+    &.progress {
+        background-color: colors.$warning;
     }
 
     &.error {

@@ -9,3 +9,7 @@ export * from "./paymentProcessor";
 export * from "./backArrow";
 export * from "./text";
 export * from "./details";
+export * from "./button";
+export * from "./modal";
+export * from "./behindBox";
+export * from "./menu";

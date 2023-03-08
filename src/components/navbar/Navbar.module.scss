@@ -3,9 +3,9 @@
 .navbar {
     display: flex;
     height: 3rem;
-    padding: 1rem;
+    padding: 2rem;
     justify-content: flex-end;
     align-items: center;
     background-color: colors.$white;
-    border-bottom: 2px solid colors.$bc;
+    border-bottom: 1px solid colors.$bc-hover;
 }

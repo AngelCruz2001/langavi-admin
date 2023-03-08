@@ -1,0 +1,33 @@
+@use "@/styles/abstracts/variables";
+@use "@/styles/colors";
+
+.button {
+    background-color: colors.$white;
+    color: colors.$black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem .5rem;
+    cursor: pointer;
+
+    &:hover {
+        background-color: colors.$bc-hover;
+    }
+
+    border-radius: 0.8rem;
+}
+
+.withIcon {
+    gap: 0.5rem;
+
+    svg {
+        // stroke: colors.$black;
+        width: 0.8rem;
+        height: 0.8rem;
+    }
+}
+
+.border {
+    border: 1px solid colors.$bc;
+}
+

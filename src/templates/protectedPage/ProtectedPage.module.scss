@@ -11,7 +11,7 @@
 .content {
     display: flex;
     flex-direction: column;
-    
+
     margin-left: 4rem;
     width: calc(100% - 4rem);
     @include mixins.respond(from-tab-port) {
@@ -21,5 +21,10 @@
 }
 
 .children {
-    margin: 1rem;
+    margin: 3rem 1rem 0 1rem;
+    display: flex;
+    flex-direction: column;
+    @include mixins.respond(from-tab-port) {
+        margin: 2rem 3rem 0 3rem;
+    }
 }

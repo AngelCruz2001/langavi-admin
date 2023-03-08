@@ -12,7 +12,7 @@
     position: fixed;
     z-index: 100;
 
-    border-right: 2px solid colors.$bc;
+    border-right: 1px solid colors.$bc-hover;
 
     &.showSidebarMobile {
         width: 80%;
