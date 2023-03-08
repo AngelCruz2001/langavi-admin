@@ -1,4 +1,4 @@
-import { IUser, roleTypeArray } from "interfaces";
+import { IUser, roleType, roleTypeArray } from "@/interfaces";
 import {
   model,
   Model,
@@ -13,26 +13,12 @@ const UserSchema = new Schema<IUser>({
   role: {
     type: String,
     enum: roleTypeArray,
-    default: "vendedor",
+    default: roleType.admin,
   },
   nickname: {
     type: String,
     required: true,
     unique: true,
-  },
-  phoneNumber: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  totalReservedLots: Number,
-  password: {
-    type: String,
-    required: true,
-  },
-  reservedLots: {
-    type: [SchemaTypes.ObjectId],
-    ref: "Lot",
   },
 });
 

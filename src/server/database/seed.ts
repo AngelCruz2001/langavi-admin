@@ -1,4 +1,4 @@
-import { IClient, IOrder, IDiscount } from "@/interfaces";
+import { IClient, IOrder, IDiscount, IUser, roleType } from "@/interfaces";
 
 export const seedOrders: IOrder[] = [
   {
@@ -1279,7 +1279,7 @@ export const seedClients: IClient[] = [
   },
 ];
 
-export const seedCoupons: IDiscount[] = [
+export const seedDiscounts: IDiscount[] = [
   {
     _id: "633742b4a5b57bbc25f002ab",
     code: "jorgefox",
@@ -1297,5 +1297,15 @@ export const seedCoupons: IDiscount[] = [
     percentaje: 15,
     code: "lasdepollo",
     active: true,
+  },
+];
+
+export const seedUsers: IUser[] = [
+  {
+    _id: "640290f901eadfd67667307d",
+    dispName: "Administración",
+    nickname: "admin",
+    password: "$2b$10$WME4BVRhiUunqC.LMj2.zeYOrb4n3VBb3XF4JSTkw7XJjaOkSQ.D2",
+    role: roleType.admin,
   },
 ];

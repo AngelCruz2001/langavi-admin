@@ -1,4 +1,4 @@
-import { IDiscount } from "interfaces";
+import { IDiscount } from "@/interfaces";
 import mongoose, { model, Model, Schema } from "mongoose";
 
 const discountSchema = new Schema<IDiscount>({

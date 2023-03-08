@@ -1,4 +1,4 @@
-import { IContactForm } from "interfaces";
+import { IContactForm } from "@/interfaces";
 import mongoose, { model, Model, models, Schema } from "mongoose";
 
 const FormContactSchema = new Schema<IContactForm>({

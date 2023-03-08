@@ -5,7 +5,7 @@ import {
   Colors,
   IProductVariant,
   INutrition,
-} from "interfaces";
+} from "@/interfaces";
 import mongoose, { model, Model, Schema } from "mongoose";
 
 interface IDiscounts {

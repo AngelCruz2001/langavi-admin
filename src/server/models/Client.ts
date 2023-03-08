@@ -1,4 +1,4 @@
-import { IAddress, IClient } from "interfaces";
+import { IAddress, IClient } from "@/interfaces";
 import mongoose, { model, Model, Schema } from "mongoose";
 
 export const addressSchema = new Schema<IAddress>({

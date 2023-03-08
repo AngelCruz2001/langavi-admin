@@ -1,4 +1,4 @@
-import { IIngredient } from "interfaces";
+import { IIngredient } from "@/interfaces";
 import mongoose, { model, Model, Schema } from "mongoose";
 
 export const ingredientSchema = new Schema<IIngredient>({

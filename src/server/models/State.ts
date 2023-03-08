@@ -1,4 +1,4 @@
-import { IPos, IState } from "interfaces";
+import { IPos, IState } from "@/interfaces";
 import mongoose, { model, Model, models, Schema } from "mongoose";
 import { imageSchema } from "./Product";
 
