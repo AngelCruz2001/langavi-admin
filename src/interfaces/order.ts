@@ -47,3 +47,14 @@ export interface IOrder {
   orderNumber: string;
   shippingPrice: number;
 }
+
+export interface IDisplayOrder {
+  _id: string;
+  total: number;
+  numberOfItems: number;
+  shippingAddress: string;
+  paidAt: string;
+  orderStatus: string;
+  orderNumber: string;
+  provider: string;
+}
