@@ -46,6 +46,8 @@ export interface IOrder {
   discounts: IOrderDiscount[];
   orderNumber: string;
   shippingPrice: number;
+  guideNumber?: string;
+  shippingProvider?: string;
 }
 
 export interface IDisplayOrder {

@@ -141,6 +141,8 @@ const orderSchema = new Schema<IOrder>({
     required: true,
     default: 50,
   },
+  guideNumber: String,
+  shippingProvider: String,
 });
 
 orderSchema.index({ clientId: "text", orderNumber: "text" });

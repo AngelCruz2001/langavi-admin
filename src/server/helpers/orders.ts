@@ -1,4 +1,5 @@
-import { IDisplayOrder, OrderStatusType } from "@/interfaces";
+import { IDisplayOrder, IOrder, OrderStatusType } from "@/interfaces";
+import { Model } from "mongoose";
 import { connect, disconnect } from "../database";
 import { Order } from "../models";
 
@@ -65,13 +66,42 @@ export const getDisplayOrders = async (
   }
 };
 
-// export interface IDisplayOrder {
-//     _id: string;
-//     total: number;
-//     numberOfItems: number;
-//     shippingAddress: string;
-//     paidAt: string;
-//     orderStatus: string;
-//     orderNumber: string;
-//     provider: string;
-//   }
+export async function getOrder(id: string): Promise<IOrder | undefined> {
+  try {
+    await connect();
+    const order = await Order.findById(id);
+    if (order) {
+      await disconnect();
+      return order;
+    }
+  } catch (error) {
+    await disconnect();
+    console.log("getFullOrder(): ", { error });
+    throw new Error("getFullOrderError");
+  }
+}
+
+export async function orderSetShippingInfo({
+  orderId,
+  shippingProvider,
+  guideNumber,
+}: {
+  orderId: string;
+  shippingProvider: string;
+  guideNumber: string;
+}): Promise<IOrder | undefined> {
+  try {
+    await connect();
+    const order = await Order.findById(orderId);
+    if (!order) return;
+    order.shippingProvider = shippingProvider;
+    order.guideNumber = guideNumber;
+    await order.save();
+    await disconnect();
+    return order;
+  } catch (error) {
+    await disconnect();
+    console.log("orderSetShippingInfo(): ", { error });
+    return;
+  }
+}
