@@ -1,3 +1,4 @@
+import { ObjectValues } from ".";
 import { IOrderDiscount } from "./discount";
 import { IAddress } from "./order";
 import { IProductOrder } from "./products";
@@ -19,7 +20,11 @@ export interface IPostPayment {
   provider: PaymentMethods;
 }
 
-export enum PaymentMethods {
-  stripe = "stripe",
-  paypal = "paypal",
-}
+export const paymentMethods = {
+  stripe: "stripe",
+  paypal: "paypal",
+} as const;
+
+export const paymentMethodsArray = Object.values(paymentMethods);
+
+export type PaymentMethods = ObjectValues<typeof paymentMethods>;

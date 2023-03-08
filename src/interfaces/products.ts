@@ -51,6 +51,7 @@ export interface IProduct {
 }
 
 export interface IProductOrder {
+  _id: string;
   title: string;
   variantName: string;
   slug: string;
