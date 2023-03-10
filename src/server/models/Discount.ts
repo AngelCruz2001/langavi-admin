@@ -21,11 +21,17 @@ const discountSchema = new Schema<IDiscount>({
   active: {
     type: Boolean,
   },
+  timesUsed: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
 });
 
 discountSchema.index({ code: "text" });
 
 const Discount: Model<IDiscount> =
   mongoose.models.Discount || model("Discount", discountSchema);
+// const Discount: Model<IDiscount> = model("Discount", discountSchema);
 
 export default Discount;
