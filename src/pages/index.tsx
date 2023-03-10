@@ -1,5 +1,4 @@
 import { IOrder } from '@/interfaces';
-import { ShippingInfoEmail } from '../server/mails/templates/ShippingInfoEmail';
 
 
 
@@ -24,7 +23,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 export default function Home({ order }: { order: IOrder }) {
   return (
     <>
-      <ShippingInfoEmail order={order} />
     </>
   );
 }

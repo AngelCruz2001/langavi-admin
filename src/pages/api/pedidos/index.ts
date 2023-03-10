@@ -18,7 +18,7 @@ export const statusArr = [
   orderStatusType.received,
 ];
 
-export default async function (
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {

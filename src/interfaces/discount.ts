@@ -5,6 +5,7 @@ export interface IDiscount {
   percentaje?: number;
   expirationDate?: string;
   active?: boolean;
+  timesUsed: number;
 }
 
 export interface IOrderDiscount {
