@@ -1,7 +1,7 @@
 @use "@/styles/colors.scss";
 
 .list {
-    p {
+    .title {
         color: colors.$primary;
     }
     ul {
@@ -13,6 +13,16 @@
             p {
                 color: colors.$secondary;
             }
+
+            .label { 
+                font-weight: 500;
+                
+            }
+
+            .value {
+                text-align: right;
+            }
+
             display: flex;
             width: 100%;
             justify-content: space-between;

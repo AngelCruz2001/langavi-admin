@@ -9,15 +9,15 @@ interface ITableProps {
   proportion: string[];
   headers: string[];
   centerRows: boolean[];
-  itemsName: string;
-  pagination: {
+  pagination?: {
     total: number;
     currentItems: number;
     perPage: number;
     pagesNumber: number;
     itemsName: string;
     onChange: (page: number) => void;
-  };
+  } | null;
+  clickeable?: boolean;
 }
 
 interface ITableRowProps {
@@ -34,7 +34,8 @@ export const Table = ({
   headers,
   proportion,
   centerRows,
-  pagination,
+  pagination = null,
+  clickeable = true,
 }: ITableProps) => {
   const arrayChildren =
     children.props && Children.toArray(children.props.children);
@@ -81,14 +82,15 @@ export const Table = ({
             {arrayChildren.map((child: ReactElement<any>, index: number) => (
               <div
                 key={`${uuid()}`}
-                onMouseOver={handleOver}
-                onMouseLeave={handleLeave}
+                onMouseOver={clickeable ? handleOver : null}
+                onMouseLeave={clickeable ? handleLeave : null}
                 id={`child-${index}-cell`}
                 className={styles.cell}
                 style={{
                   justifyContent: centerRows[indexHeader]
                     ? "center"
                     : "flex-start",
+                  cursor: clickeable ? "pointer" : "default",
                 }}
                 {...child.props}
               >
@@ -102,7 +104,7 @@ export const Table = ({
         ))}
       </div>
 
-      <Pagination {...pagination} />
+      {pagination && <Pagination {...pagination} />}
     </div>
   );
 };

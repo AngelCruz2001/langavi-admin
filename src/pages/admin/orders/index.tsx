@@ -269,7 +269,6 @@ const Orders: NextPage = () => {
             perPage: 10,
             total: orders.length,
           }}
-          itemsName="Ordenes"
         >
           <>
             {orders.map((order) => (

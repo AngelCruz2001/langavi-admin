@@ -36,15 +36,13 @@ export const Status = ({ clickeable = false, ...props }: StatusProps) => {
         <Content {...props} status={status} />
       )}
 
-      {showModal && (
-        <BehindBox>
-          {props.options?.map((option, index) => (
-            <Button key={index} onClick={() => handleSetStatus(index)}>
-              <Content {...props} status={index} />
-            </Button>
-          ))}
-        </BehindBox>
-      )}
+      <BehindBox show={showModal} setShow={setShowModal}>
+        {props.options?.map((option, index) => (
+          <Button key={index} onClick={() => handleSetStatus(index)}>
+            <Content {...props} status={index} />
+          </Button>
+        ))}
+      </BehindBox>
     </div>
   );
 };

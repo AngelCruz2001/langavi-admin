@@ -26,8 +26,10 @@ export const Modal = ({
     <>
       {isOpen &&
         createPortal(
-          <div className={styles.modal} onClick={handleContentClick}>
-            {children}
+          <div className={styles.modal}>
+            <div className={styles.modalContent} onClick={handleContentClick}>
+              {children}
+            </div>
           </div>,
           ref.current
         )}

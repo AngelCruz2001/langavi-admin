@@ -13,3 +13,4 @@ export * from "./button";
 export * from "./modal";
 export * from "./behindBox";
 export * from "./menu";
+export * from "./input";

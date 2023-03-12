@@ -15,7 +15,7 @@ export const Card = ({
 }: ICardProps) => {
   return (
     <div
-    style={props.styles}
+      style={props.styles}
       className={`${styles.card} ${className}
     ${fullHeight ? styles.fullHeight : ""}
     `}

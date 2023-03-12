@@ -19,7 +19,7 @@
     }
 
     @include mixins.respond(from-tab-port) {
-        width: 21rem;
+        width: 19rem;
         // width: auto;
         // position: relative;
         padding: 2rem;
@@ -117,8 +117,8 @@
             transform: none;
         }
         svg {
-            width: 2rem;
-            height: 2rem;
+            width: 1.7rem;
+            height: 1.7rem;
             background-color: transparent;
         }
     }
