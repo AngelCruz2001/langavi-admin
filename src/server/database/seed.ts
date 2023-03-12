@@ -1285,18 +1285,21 @@ export const seedDiscounts: IDiscount[] = [
     code: "jorgefox",
     active: false,
     quantity: 50,
+    timesUsed: 0,
   },
   {
     _id: "6345faeab53dfb6a5fbf90f9",
     code: "andres15",
     active: true,
     percentaje: 15,
+    timesUsed: 0,
   },
   {
     _id: "63fcd862a58ef0fec27a5e22",
     percentaje: 15,
     code: "lasdepollo",
     active: true,
+    timesUsed: 0,
   },
 ];
 

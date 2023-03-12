@@ -8,13 +8,12 @@ import {
   PaymentProcessor,
 } from "@/components";
 import { Fragment } from "react";
-import { IOrders } from "@/interfaces/Orders.interface";
 import { useRouter } from "next/router";
 
 const Orders: NextPage = () => {
   const router = useRouter();
 
-  const orders: IOrders[] = [
+  const orders = [
     {
       _id: {
         $oid: "63bf35734eda33b77a72ef70",
@@ -231,7 +230,7 @@ const Orders: NextPage = () => {
     },
   ];
 
-  const handleClickRow = (data: IOrders) => {
+  const handleClickRow = (data: any) => {
     const { $oid } = data._id;
     router.push({
       pathname: "/admin/orders/[orderId]",

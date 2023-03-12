@@ -32,7 +32,7 @@ export const BehindBox = ({
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [show]);
+  }, [show, setShow]);
 
   // show behind the parent component but without the scope of the parent component
 
