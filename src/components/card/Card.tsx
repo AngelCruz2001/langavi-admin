@@ -3,11 +3,24 @@ import styles from "./Card.module.scss";
 interface ICardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className?: string;
+  fullHeight?: boolean;
+  styles?: React.CSSProperties;
 }
 
-export const Card = ({ children, className, ...props }: ICardProps) => {
+export const Card = ({
+  children,
+  className,
+  fullHeight,
+  ...props
+}: ICardProps) => {
   return (
-    <div className={`${styles.card} ${className}`} {...props}>
+    <div
+      style={props.styles}
+      className={`${styles.card} ${className}
+    ${fullHeight ? styles.fullHeight : ""}
+    `}
+      {...props}
+    >
       {children}
     </div>
   );

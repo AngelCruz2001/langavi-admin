@@ -1,8 +1,11 @@
 @use "../../styles/colors";
 
 .table {
-    display: flex;
     overflow: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
 .content {
     display: flex;
@@ -42,8 +45,8 @@
     width: 100%;
     align-items: center;
     img {
-        width: 3rem;
-        height: 3rem;
+        width: 3rem !important;
+        height: 3rem !important;
     }
 
     p {
@@ -63,4 +66,38 @@
 .hover {
     background-color: colors.$secondary-light;
     transition: all 0.3s ease-in-out;
+}
+
+.disabled {
+    svg {
+        stroke: colors.$secondary;
+    }
+    cursor: not-allowed;
+}
+
+.pagination {
+    display: flex;
+    // position: fixed;
+    margin-top: auto;
+    p {
+        color: colors.$secondary;
+    }
+}
+
+.indicators {
+    display: flex;
+}
+
+.pages {
+    display: flex;
+    margin-left: auto;
+}
+
+.buttons {
+    display: flex;
+    margin-left: 0.5rem;
+
+    svg {
+        stroke: colors.$secondary;
+    }
 }

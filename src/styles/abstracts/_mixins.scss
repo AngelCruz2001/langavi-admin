@@ -6,8 +6,9 @@
 }
 
 @mixin boxShadow {
-  box-shadow: 0 0 1rem 0.3rem rgba($primary, 0.25);
+  box-shadow: 5px 5px 5px 0px rgba($secondary, 0.1);
 }
+
 @mixin insetBoxShadow {
   box-shadow: inset 0 0 1rem 0.3rem rgba($primary, 0.25);
 }

@@ -1,9 +1,23 @@
+@use "@/styles/abstracts/mixins.scss";
 .right {
-    // position: absolute;
-    // right: 0;
-    // top: 50%;
-
-    // transform: translateY(-50%);
     margin-left: auto;
-    align-self: center;    
+    align-self: center;
+}
+
+.orderPage {
+    @include mixins.respond(from-tab-port) {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+}
+
+.section {
+    margin-top: 1rem;
+    
+    @include mixins.respond(from-tab-port) {
+        flex: 1;
+        margin: 0;
+    }
 }

@@ -2,12 +2,22 @@ import React, { Children, ReactElement, useEffect, useId, useRef } from "react";
 import styles from "./Table.module.scss";
 import { Line } from "../line/Line";
 import { v4 as uuid } from "uuid";
+import { Button, Svg } from "@/components";
 
 interface ITableProps {
   children: ReactElement<any>;
   proportion: string[];
   headers: string[];
   centerRows: boolean[];
+  pagination?: {
+    total: number;
+    currentItems: number;
+    perPage: number;
+    pagesNumber: number;
+    itemsName: string;
+    onChange: (page: number) => void;
+  } | null;
+  clickeable?: boolean;
 }
 
 interface ITableRowProps {
@@ -24,6 +34,8 @@ export const Table = ({
   headers,
   proportion,
   centerRows,
+  pagination = null,
+  clickeable = true,
 }: ITableProps) => {
   const arrayChildren =
     children.props && Children.toArray(children.props.children);
@@ -70,14 +82,15 @@ export const Table = ({
             {arrayChildren.map((child: ReactElement<any>, index: number) => (
               <div
                 key={`${uuid()}`}
-                onMouseOver={handleOver}
-                onMouseLeave={handleLeave}
+                onMouseOver={clickeable ? handleOver : null}
+                onMouseLeave={clickeable ? handleLeave : null}
                 id={`child-${index}-cell`}
                 className={styles.cell}
                 style={{
                   justifyContent: centerRows[indexHeader]
                     ? "center"
                     : "flex-start",
+                  cursor: clickeable ? "pointer" : "default",
                 }}
                 {...child.props}
               >
@@ -90,6 +103,8 @@ export const Table = ({
           </div>
         ))}
       </div>
+
+      {pagination && <Pagination {...pagination} />}
     </div>
   );
 };
@@ -103,6 +118,61 @@ const Row = ({ children, ...props }: ITableRowProps) => {
 };
 const Cell = ({ children, ...props }: ITableComposition) => {
   return <>{children}</>;
+};
+
+const Pagination = ({
+  total,
+  currentItems,
+  perPage,
+  pagesNumber,
+  itemsName,
+  onChange,
+}: {
+  total: number;
+  currentItems: number;
+  perPage: number;
+  pagesNumber: number;
+  itemsName: string;
+  onChange: (page: number) => void;
+}) => {
+  const actualPage = 1;
+
+  const previousPage = () => {
+    if (actualPage > 1) {
+      onChange(actualPage - 1);
+    }
+  };
+
+  const nextPage = () => {
+    if (actualPage < pagesNumber) {
+      onChange(actualPage + 1);
+    }
+  };
+
+  return (
+    <div className={styles.pagination}>
+      <div className={styles.indicators}>
+        <p>
+          {currentItems > 0 ? 1 : 0} - {currentItems} de {total} {itemsName}
+        </p>
+      </div>
+      <div className={styles.pages}>
+        <p>
+          {actualPage} de {pagesNumber}
+        </p>
+        <div
+          className={`${styles.buttons}
+        ${
+          actualPage === pagesNumber || pagesNumber === 0 ? styles.disabled : ""
+        }
+        `}
+        >
+          <Button onClick={previousPage} withIcon iconName="left-arrow" />
+          <Button onClick={nextPage} withIcon iconName="right-arrow" />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 Table.Row = Row;

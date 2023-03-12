@@ -8,6 +8,12 @@
 }
 
 .description {
-    font-size: variables.$font-size-small;
-    color: colors.$secondary;
+    max-width: fit-content;
+    p {
+        font-size: variables.$font-size-small;
+        color: colors.$secondary;
+    }
+    span {
+        color: colors.$primary;
+    }
 }

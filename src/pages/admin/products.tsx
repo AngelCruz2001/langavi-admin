@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import { Card, CardHeader, CardSection, Table, Status } from "@/components";
 import { Fragment } from "react";
+import Image from "next/image";
 const orders: NextPage = () => {
   const products = [
     {
@@ -25,8 +26,6 @@ const orders: NextPage = () => {
     },
   ];
 
-
-  
   return (
     <Card>
       <CardSection line={false}>
@@ -45,11 +44,21 @@ const orders: NextPage = () => {
             {products.map((product) => (
               <Fragment key={product._id}>
                 <Table.Cell>
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    style={{ marginRight: "1rem" }}
-                  />
+                  <div
+                    style={{
+                      width: "3rem",
+                      height: "3rem",
+                      position: "relative",
+                      marginRight: "1rem",
+                    }}
+                  >
+                    <Image
+                      fill
+                      src={product.image}
+                      alt={product.title}
+                      style={{ marginRight: "1rem" }}
+                    />
+                  </div>
                   <p>
                     {product.title} - {product.variantName}
                   </p>

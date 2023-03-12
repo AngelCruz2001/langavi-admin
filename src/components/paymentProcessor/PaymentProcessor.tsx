@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "./PaymentProcessor.module.scss";
 
 interface IPaymentProcessorProps {
@@ -18,7 +19,7 @@ export const PaymentProcessor = ({ pickImage }: IPaymentProcessorProps) => {
 
   return (
     <div className={styles.PaymentProcessor}>
-      <img src={providerImage} alt="Logotipo del proveedor de pagos" />
+      <Image src={providerImage} alt="Logotipo del proveedor de pagos" />
     </div>
   );
 };

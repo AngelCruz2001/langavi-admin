@@ -1,0 +1,31 @@
+@use "@/styles/colors.scss";
+
+.list {
+    .title {
+        color: colors.$primary;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            p {
+                color: colors.$secondary;
+            }
+
+            .label { 
+                font-weight: 500;
+                
+            }
+
+            .value {
+                text-align: right;
+            }
+
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+        }
+    }
+}
