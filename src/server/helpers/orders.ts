@@ -66,7 +66,7 @@ export const getDisplayOrders = async (
   }
 };
 
-export async function getOrder(id: string): Promise<IOrder | undefined> {
+export async function getOrder(id: string) {
   try {
     await connect();
     const order = await Order.findById(id);

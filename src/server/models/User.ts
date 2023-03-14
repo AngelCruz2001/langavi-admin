@@ -9,7 +9,10 @@ import {
 } from "mongoose";
 
 const UserSchema = new Schema<IUser>({
-  dispName: String,
+  dispName: {
+    type: String,
+    required: true,
+  },
   role: {
     type: String,
     enum: roleTypeArray,
@@ -19,6 +22,10 @@ const UserSchema = new Schema<IUser>({
     type: String,
     required: true,
     unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
   },
 });
 

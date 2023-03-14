@@ -26,6 +26,7 @@
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "bcrypt": "^5.1.0",
+    "cookie": "^0.5.0",
     "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
     "framer-motion": "^9.0.4",
@@ -42,6 +43,8 @@
     "uuidv4": "^6.2.13"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/cookie": "^0.5.1",
     "@types/jsonwebtoken": "^9.0.1",
     "@types/nodemailer": "^6.4.7"
   }
