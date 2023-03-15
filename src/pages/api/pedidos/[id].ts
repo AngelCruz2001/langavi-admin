@@ -1,7 +1,9 @@
+import { verifyToken } from "@/server/helpers";
+import { getClient } from "@/server/helpers/clients";
 import { getOrder, orderSetShippingInfo } from "@/server/helpers/orders";
 import { sendShippingInfoEmail } from "@/server/mails";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { IOrder } from "../../../interfaces/order";
+import { IOrder, orderStatusTypeArray } from "../../../interfaces/order";
 
 type Data =
   | {
@@ -19,7 +21,14 @@ export default async function handler(
     method,
     body,
     query: { id },
+    // cookies,
   } = req;
+
+  // const token =
+  //   cookies.auth?.replace("%20", "").replace("Bearer", "").replace(" ", "") ||
+  //   "";
+  // const isAuth = await verifyToken(token);
+  // console.log({ token });
 
   switch (method) {
     case "GET": {
@@ -38,7 +47,7 @@ export default async function handler(
     case "POST": {
       const { guideNumber, shippingProvider } = body;
       if (!guideNumber || !shippingProvider)
-        return res.status(402).json({
+        return res.status(406).json({
           error:
             "Body should be {guideNumber: string, shippingProvider: string}",
         });
@@ -50,14 +59,36 @@ export default async function handler(
       });
 
       if (order) {
+        const client = await getClient(order.clientId);
         await sendShippingInfoEmail({
-          to: "applebono3@gmail.com", // temporal
+          // to: "applebono3@gmail.com", // temporal
+          to: client?.email || "i.s.ricardo.sandoval@gmail.com",
           order,
         });
         return res.status(201).json({ order });
       }
 
       return res.status(404).json({ error: "Order not found" });
+    }
+
+    case "PUT": {
+      try {
+        const { status } = body;
+        if (!orderStatusTypeArray.includes(status)) {
+          console.log({ status });
+          return res.status(406).json({ error: "Invalid status" });
+        }
+        const order = await getOrder(String(id));
+        if (!order) {
+          return res.status(404).json({ error: "Order not found" });
+        }
+        order.orderStatus = status;
+        await order.save();
+        return res.status(201).json({ order });
+      } catch (error) {
+        console.log("/pedidos/[id]: ", { error });
+        return res.status(500).json({ error: "Server error" });
+      }
     }
 
     default:

@@ -28,7 +28,7 @@ export interface IAddress {
 
 export interface IOrder {
   _id: string;
-  clientId?: string;
+  clientId: string;
   shippingAddress: IAddress;
   billingAddress: IAddress;
   products: IProductOrder[];
