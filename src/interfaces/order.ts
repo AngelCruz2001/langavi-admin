@@ -60,3 +60,10 @@ export interface IDisplayOrder {
   orderNumber: string;
   provider: string;
 }
+
+
+export interface IOrderResponse { 
+  orders: IOrder[];
+  currentPage: number;
+  totalPages: number;
+}

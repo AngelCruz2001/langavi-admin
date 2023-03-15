@@ -17,110 +17,33 @@ import {
   Form,
 } from "@/components";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { SubmitButton } from "../../../components/button/SubmitButton";
 import * as Yup from "yup";
 import { Formik } from "formik";
+import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter";
+import { orderStatusTypeArray } from "@/interfaces";
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import { fetchOrder } from "@/store/slices/orders/ordersThunks";
 
 interface IOrderProps {}
 
 const OrderDetail = (props: IOrderProps) => {
+  const dispatch = useAppDispatch();
+
+  const order = useAppSelector((state) => state.orders.activeOrder);
+  const loading = useAppSelector((state) => state.orders.loading);
+
   // Get id from url
   const router = useRouter();
-  const { orderId } = router.query;
+  const { orderId } = router.query as { orderId: string };
 
-  const order = {
-    _id: "63bf35734eda33b77a72ef70",
-    orderNumber: "T53710248",
-    clientId: "63bf35734eda33b77a72ef6d",
-    shippingAddress: {
-      firstName: "juan alejandro",
-      lastName: "flores perez",
-      address: "avenida cuauhtemoc 830, narvarte poniente",
-      address2: "departamento 603",
-      city: "benito juarez",
-      estate: "ciudad de méxico",
-      country: "méxico",
-      zip: "3020",
-      phone: "4621651299",
-      _id: "63bf35734eda33b77a72ef71",
-    },
-    billingAddress: {
-      firstName: "juan alejandro",
-      lastName: "flores perez",
-      address: "avenida cuauhtemoc 830, narvarte poniente",
-      address2: "departamento 603",
-      city: "benito juarez",
-      estate: "ciudad de méxico",
-      country: "méxico",
-      zip: "3020",
-      phone: "4621651299",
-      _id: "63bf35734eda33b77a72ef72",
-    },
-    products: [
-      {
-        title: "chocolate blanco artesanal",
-        variantName: "18g",
-        slug: "chocolate_blanco_artesanal",
-        image:
-          "https://langavi-product-pictures.s3.amazonaws.com/chocolate_blanco_artesanal_18g_1663629800710.png",
-        price: 270,
-        quantity: 1,
-        description: "Caja con 18 barras",
-        _id: "63bf35734eda33b77a72ef73",
-      },
-      {
-        title: "chocolate amargo 73% cacao",
-        variantName: "18g",
-        slug: "chocolate_amargo_73-cacao",
-        image:
-          "https://langavi-product-pictures.s3.amazonaws.com/chocolate_amargo_73-cacao_18g_1663629227098.png",
-        price: 270,
-        quantity: 1,
-        description: "Caja con 18 barras",
-        _id: "63bf35734eda33b77a72ef74",
-      },
-      {
-        title: "chocolate de leche premium",
-        variantName: "18g",
-        slug: "chocolate_de-leche_premium",
-        image:
-          "https://langavi-product-pictures.s3.amazonaws.com/chocolate_de-leche_premium_18g_1663628487047.png",
-        price: 270,
-        quantity: 1,
-        description: "Caja con 18 barras",
-        _id: "63bf35734eda33b77a72ef75",
-      },
-      {
-        title: "chocolate amargo premium",
-        variantName: "18g",
-        slug: "chocolate_amargo_premium",
-        image:
-          "https://langavi-product-pictures.s3.amazonaws.com/chocolate_amargo_premium_18g_1663627587138.png",
-        price: 270,
-        quantity: 1,
-        description: "Caja con 18 barras",
-        _id: "63bf35734eda33b77a72ef76",
-      },
-    ],
-    numberOfItems: 4,
-    subtotal: 1080,
-    tax: {
-      percent: "0.16",
-      amount: "949.2",
-      _id: "63bf35734eda33b77a72ef77",
-    },
-    total: 1080,
-    paidAt: "11 de enero de 2023",
-    transactionId: "1D903767N30929927",
-    orderStatus: "preparando pedido para ser enviado",
-    provider: "paypal",
-    discounts: [],
-    shippingPrice: 50,
-  };
+  useEffect(() => {
+    if (orderId) dispatch(fetchOrder(orderId));
+  }, [dispatch, orderId]);
 
-  const options = ["Enviado", "Entregado", "Preparando"];
+  //const options = orderStatusType; // ["preparando pedido para ser enviado", "enviado", "entregado", "cancelado"];
 
   const shippingAddress = {
     firstName: "juan alejandro",
@@ -144,10 +67,18 @@ const OrderDetail = (props: IOrderProps) => {
     setIsEditing(true);
   };
 
+  const handleChangeStatus = (status: string) => {
+    console.log(status);
+  };
+
   const handleEditSubmit = (data: any) => {
     console.log(data);
+    // TODO: dispatch update order
+    // TODO: Close modal after submit successfully
     setIsEditing(false);
   };
+
+  if (!order || loading) return <div>Loading...</div>;
 
   return (
     <>
@@ -170,7 +101,16 @@ const OrderDetail = (props: IOrderProps) => {
                     gap: "1.5rem",
                   }}
                 >
-                  <Status status={0} clickeable options={options} />
+                  <Status
+                    status={orderStatusTypeArray.findIndex(
+                      (status) => status === order.orderStatus
+                    )}
+                    clickeable
+                    onClick={handleChangeStatus}
+                    options={orderStatusTypeArray.map((option) =>
+                      capitalizeFirstLetter(option)
+                    )}
+                  />
                   <Menu>
                     <Button
                       onClick={handleEdit}
@@ -185,8 +125,18 @@ const OrderDetail = (props: IOrderProps) => {
             </CardSection>
             <CardSection line={false}>
               <Description>
-                Guía de rastreo <span>1Z1234567890123456</span> paqueteria DHL
-                pagado el {order.paidAt}
+                {order.guideNumber ? (
+                  <>
+                    Guía de rastreo <span>{order.guideNumber}</span> paqueteria{" "}
+                    <span>{order.shippingProvider}</span> pagado el{" "}
+                    <span>{order.paidAt}</span>
+                  </>
+                ) : (
+                  <>
+                    Orden sin datos de envio, por favor actualiza los datos,
+                    pagada el <span>{order.paidAt}</span>
+                  </>
+                )}
               </Description>
               <List
                 listTitle="Detalles"
@@ -304,7 +254,11 @@ const OrderDetail = (props: IOrderProps) => {
                   {
                     label: "Descuentos",
                     value:
-                      order.discounts.length > 0 ? order.discounts[0] : "-",
+                      order.discounts.length > 0
+                        ? `${[
+                            ...order.discounts.map((discount) => discount.code),
+                          ]} `
+                        : "No se aplicaron descuentos",
                   },
                   {
                     label: "Impuestos",
@@ -380,6 +334,7 @@ const OrderDetail = (props: IOrderProps) => {
                 })}
                 initialValues={{
                   trackingNumber: "",
+                  trackingService: "",
                   shippingPrice: "",
                 }}
                 validateOnMount
@@ -397,6 +352,7 @@ const OrderDetail = (props: IOrderProps) => {
                         name="trackingService"
                         label="Paquetería"
                         type="select"
+                        placeholder="Selecciona una paquetería"
                         options={[
                           { value: "dhl", label: "DHL" },
                           { value: "fedex", label: "Fedex" },

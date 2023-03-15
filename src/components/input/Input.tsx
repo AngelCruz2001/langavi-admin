@@ -37,6 +37,10 @@ export const Input = ({
   if (type === "select") {
     Input = (
       <Field as="select" name={name} className={styles.field} id={name}>
+        {/* Default option  */}
+        <option value="" disabled>
+          {placeholder}
+        </option>
         {options?.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}

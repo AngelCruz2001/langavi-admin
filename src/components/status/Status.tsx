@@ -2,6 +2,7 @@ import styles from "./Status.module.scss";
 import React, { useEffect, useMemo } from "react";
 import { Card, Modal, Button } from "@/components";
 import { BehindBox } from "../behindBox/BehindBox";
+import { orderStatusTypeArray } from "@/interfaces";
 
 interface StatusProps {
   status: number;
@@ -9,9 +10,15 @@ interface StatusProps {
   style?: React.CSSProperties;
   clickeable?: boolean;
   className?: string;
+  onClick?: (status: string) => void;
 }
 
-export const Status = ({ clickeable = false, ...props }: StatusProps) => {
+export const Status = ({
+  clickeable = false,
+  options = orderStatusTypeArray,
+  onClick,
+  ...props
+}: StatusProps) => {
   const [showModal, setShowModal] = React.useState(false);
 
   const [status, setStatus] = React.useState(props.status);
@@ -23,6 +30,8 @@ export const Status = ({ clickeable = false, ...props }: StatusProps) => {
   const handleSetStatus = (status: number) => {
     setShowModal(!showModal);
     setStatus(status);
+
+    onClick && onClick(orderStatusTypeArray[status]);
     console.log(status);
   };
 
@@ -30,16 +39,16 @@ export const Status = ({ clickeable = false, ...props }: StatusProps) => {
     <div className={styles.container}>
       {clickeable ? (
         <Button onClick={handleToggleModal}>
-          <Content {...props} status={status} />
+          <Content {...props} status={status} options={options} />
         </Button>
       ) : (
-        <Content {...props} status={status} />
+        <Content {...props} status={status} options={options} />
       )}
 
       <BehindBox show={showModal} setShow={setShowModal}>
-        {props.options?.map((option, index) => (
+        {options.map((option, index) => (
           <Button key={index} onClick={() => handleSetStatus(index)}>
-            <Content {...props} status={index} />
+            <Content {...props} status={index} options={options} />
           </Button>
         ))}
       </BehindBox>
@@ -47,21 +56,26 @@ export const Status = ({ clickeable = false, ...props }: StatusProps) => {
   );
 };
 
-const Content = ({
-  status = 0,
-  options = ["Enviado", "Entregado", "Preparando"],
-  ...props
-}) => {
+interface ContentProps {
+  status: number;
+  options: string[];
+  style?: React.CSSProperties;
+  className?: string;
+}
+
+const Content = ({ options, status = 0, ...props }: ContentProps) => {
   const styleStatus = useMemo(() => {
     switch (status) {
       case 0:
-        return styles.success;
+        return styles.standby;
       case 1:
-        return styles.error;
+        return styles.progress;
       case 2:
-        return styles.progress;
+        return styles.send;
+      case 3:
+        return styles.delivered;
       default:
-        return styles.progress;
+        return styles.error;
     }
   }, [status]);
 
