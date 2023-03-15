@@ -7,5 +7,9 @@ interface IDescriptionProps {
 export const Description = ({
   children,
 }: React.PropsWithChildren<IDescriptionProps>) => {
-  return <p className={styles.description}>{children}</p>;
+  return (
+    <div className={styles.description}>
+      <p>{children}</p>
+    </div>
+  );
 };

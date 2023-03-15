@@ -3,9 +3,17 @@
 .navbar {
     display: flex;
     height: 3rem;
-    padding: 1rem;
+    padding: 2rem;
     justify-content: flex-end;
     align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: calc(100% - 4rem);
     background-color: colors.$white;
-    border-bottom: 2px solid colors.$bc;
+    border-bottom: 1px solid colors.$bc-hover;
+    z-index: 10;
+    @include mixins.respond(from-tab-port) {
+        width: calc(100% - 19rem);
+    }
 }

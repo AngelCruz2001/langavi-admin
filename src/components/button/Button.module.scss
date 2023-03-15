@@ -1,0 +1,80 @@
+@use "@/styles/abstracts/variables";
+@use "@/styles/colors";
+
+.button {
+    background-color: colors.$white;
+    color: colors.$black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        background-color: colors.$bc;
+    }
+
+    border-radius: 0.8rem;
+}
+
+.withIcon {
+    gap: 0.5rem;
+
+    svg {
+        // stroke: colors.$black;
+        width: 0.8rem;
+        height: 0.8rem;
+    }
+}
+
+.border {
+    border: 1px solid colors.$bc;
+}
+
+.submitButton {
+    background-color: colors.$primary;
+    color: colors.$white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+    min-width: 4rem;
+    min-height: 2rem;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+        background-color: lighten(colors.$primary, 10%);
+    }
+}
+
+.cancel {
+    background-color: colors.$bc;
+    color: colors.$black;
+    border: 1px solid colors.$bc-hover;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+        background-color: darken(colors.$bc, 5%);
+    }
+}
+
+.disabled {
+    opacity: 0.1;
+    background-color: red !important;
+    cursor: not-allowed;
+}
+
+.loading {
+    border-top: 2px solid colors.$bc;
+
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+    margin: auto;
+}
