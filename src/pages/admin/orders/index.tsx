@@ -11,7 +11,6 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { orderStatusTypeArray } from "@/interfaces";
-import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter";
 import { fetchOrders } from "@/store/slices/orders/ordersThunks";
 
 const Orders: NextPage = () => {
@@ -19,10 +18,6 @@ const Orders: NextPage = () => {
   const router = useRouter();
 
   const orders = useAppSelector((state) => state.orders.ordersList);
-  const loading = useAppSelector((state) => state.orders.loading);
-  const error = useAppSelector((state) => state.orders.error);
-  const currentPage = useAppSelector((state) => state.orders.currentPage);
-  const totalPages = useAppSelector((state) => state.orders.totalPages);
 
   useEffect(() => {
     dispatch(fetchOrders());
@@ -36,7 +31,7 @@ const Orders: NextPage = () => {
   };
 
   return (
-    <Card fullHeight={true}>
+    <Card>
       <CardSection line={false}>
         <CardHeader>
           <h4>Ordenes</h4>
@@ -72,12 +67,8 @@ const Orders: NextPage = () => {
                 <Table.Cell>{order.orderNumber}</Table.Cell>
                 <Table.Cell>
                   <Status
-                    options={orderStatusTypeArray.map((status) =>
-                      capitalizeFirstLetter(status)
-                    )}
-                    status={orderStatusTypeArray.findIndex(
-                      (status) => status === order.orderStatus
-                    )}
+                    options={orderStatusTypeArray}
+                    status={order.orderStatus}
                   />
                 </Table.Cell>
                 <Table.Cell>
@@ -85,7 +76,7 @@ const Orders: NextPage = () => {
                   {order.numberOfItems > 1 ? "piezas" : "pieza"}
                 </Table.Cell>
                 <Table.Cell>
-                  {order.shippingAddress.country} - {order.shippingAddress.city}
+                  <p>{order.shippingAddress}</p>
                 </Table.Cell>
                 <Table.Cell>{order.total}</Table.Cell>
                 <Table.Cell>

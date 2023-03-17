@@ -1,11 +1,12 @@
 import styles from "./Status.module.scss";
-import React, { useEffect, useMemo } from "react";
-import { Card, Modal, Button } from "@/components";
+import React, { useMemo } from "react";
+import { Button } from "@/components";
 import { BehindBox } from "../behindBox/BehindBox";
 import { orderStatusTypeArray } from "@/interfaces";
+import { capitalizeFirstLetter } from "../../utils/capitalizeFirstLetter";
 
 interface StatusProps {
-  status: number;
+  status: string;
   options?: string[];
   style?: React.CSSProperties;
   clickeable?: boolean;
@@ -17,37 +18,38 @@ export const Status = ({
   clickeable = false,
   options = orderStatusTypeArray,
   onClick,
+  status,
   ...props
 }: StatusProps) => {
   const [showModal, setShowModal] = React.useState(false);
 
-  const [status, setStatus] = React.useState(props.status);
+  const statusNumber = useMemo(() => {
+    return options.indexOf(status);
+  }, [status, options]);
 
   const handleToggleModal = () => {
     setShowModal(!showModal);
   };
 
-  const handleSetStatus = (status: number) => {
+  const handleSetStatus = (status: string) => {
     setShowModal(!showModal);
-    setStatus(status);
 
-    onClick && onClick(orderStatusTypeArray[status]);
-    console.log(status);
+    onClick && onClick(status);
   };
 
   return (
     <div className={styles.container}>
       {clickeable ? (
         <Button onClick={handleToggleModal}>
-          <Content {...props} status={status} options={options} />
+          <Content {...props} status={statusNumber} options={options} />
         </Button>
       ) : (
-        <Content {...props} status={status} options={options} />
+        <Content {...props} status={statusNumber} options={options} />
       )}
 
       <BehindBox show={showModal} setShow={setShowModal}>
         {options.map((option, index) => (
-          <Button key={index} onClick={() => handleSetStatus(index)}>
+          <Button key={index} onClick={() => handleSetStatus(option)}>
             <Content {...props} status={index} options={options} />
           </Button>
         ))}
@@ -90,7 +92,7 @@ const Content = ({ options, status = 0, ...props }: ContentProps) => {
         className={`${styles.statusCircle} ${styleStatus}
           `}
       />
-      <p>{options[status]}</p>
+      <p>{capitalizeFirstLetter(options[status])}</p>
     </div>
   );
 };

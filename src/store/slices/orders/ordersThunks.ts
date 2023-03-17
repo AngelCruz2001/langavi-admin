@@ -1,7 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchOrdersStart } from "./ordersSlice";
-import { get, post } from "@/api/langaviApi";
-import { IOrderResponse, IOrder } from "../../../interfaces/order";
+import { get, post, put } from "@/api/langaviApi";
+import {
+  IOrderResponse,
+  IOrder,
+  IEditOrderResponse,
+  OrderStatusType,
+} from "@/interfaces/order";
+import { toast } from "react-hot-toast";
 
 // Thunk for fetching orders
 export const fetchOrders = createAsyncThunk(
@@ -55,22 +61,19 @@ export const fetchOrder = createAsyncThunk(
 
 export const setStatus = createAsyncThunk(
   "orders/setStatus",
-  async (data: { id: string; status: string }, { dispatch }) => {
+  async (data: { orderId: string; status: OrderStatusType }, { dispatch }) => {
     try {
-      // Dispatch the fetch orders start action
-      dispatch(fetchOrdersStart());
-
       // Call the API to fetch orders
-      const response = await get<{
-        order: IOrder;
-      }>(`/pedidos/${data.id}/status/${data.status}`);
+      const response = await put(`/pedidos/${data.orderId}`, {
+        status: data.status,
+      });
 
       // Return the fetched orders
       return response.order;
     } catch (error: any) {
       // Dispatch the fetch orders error action with the error message as the payload
       // dispatch(fetchOrdersError(error.message));
-
+      toast.error(error.message);
       // Re-throw the error to propagate it
       throw error;
     }
@@ -81,29 +84,37 @@ export const addShippingInfo = createAsyncThunk(
   "orders/addShippingInfo",
   async (
     data: {
-      id: string;
+      orderId: string;
       shippingInfo: { guideNumber: string; shippingProvider: string };
-      shippingPrice: number;
+      closeModal: () => void;
+      // shippingPrice: number;
     },
     { dispatch }
   ) => {
     try {
-      // Dispatch the fetch orders start action
-      dispatch(fetchOrdersStart());
-
       // Call the API to fetch orders
-      const response = await post<IOrderResponse>(`/pedidos/${data.id}`, {
-        shippingInfo: data.shippingInfo,
-        shippingPrice: data.shippingPrice,
-      });
+      const response = await post<IEditOrderResponse>(
+        `/pedidos/${data.orderId}`,
+        {
+          ...data.shippingInfo,
+        }
+      );
 
-      console.log(response)
+      if (response.order) {
+        dispatch(setStatus({ orderId: data.orderId, status: "enviado" }));
+        toast.success("Información de envío agregada");
+        data.closeModal();
+      }
+
       // Return the fetched orders
       return response.order;
-
     } catch (error: any) {
       // Dispatch the fetch orders error action with the error message as the payload
       // dispatch(fetchOrdersError(error.message));
+
+      // toast.error(error.message);
+      // return error.message;
+      return null;
 
       // Re-throw the error to propagate it
       throw error;

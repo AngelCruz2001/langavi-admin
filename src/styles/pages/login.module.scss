@@ -1,0 +1,65 @@
+@use "@/styles/colors.scss";
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background: rgb(88, 22, 119);
+    background: -moz-linear-gradient(
+        146deg,
+        rgba(88, 22, 119, 1) 0%,
+        rgba(229, 72, 116, 1) 45%,
+        rgba(190, 130, 234, 1) 68%,
+        rgba(233, 204, 197, 1) 100%
+    );
+    background: -webkit-linear-gradient(
+        146deg,
+        rgba(88, 22, 119, 1) 0%,
+        rgba(229, 72, 116, 1) 45%,
+        rgba(190, 130, 234, 1) 68%,
+        rgba(233, 204, 197, 1) 100%
+    );
+    background: linear-gradient(
+        146deg,
+        rgba(88, 22, 119, 1) 0%,
+        rgba(229, 72, 116, 1) 45%,
+        rgba(190, 130, 234, 1) 68%,
+        rgba(233, 204, 197, 1) 100%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#581677",endColorstr="#e9ccc5",GradientType=1);
+}
+
+.login {
+    padding: 5rem;
+}
+
+.headerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+
+    h1 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    p {
+        color: colors.$secondary;
+        text-align: center;
+        font-size: 1.1rem;
+        font-weight: 400;
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30rem;
+}

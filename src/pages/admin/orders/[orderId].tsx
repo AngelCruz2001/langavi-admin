@@ -15,6 +15,7 @@ import {
   Table,
   Input,
   Form,
+  CopyOnClick,
 } from "@/components";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -22,10 +23,14 @@ import Image from "next/image";
 import { SubmitButton } from "../../../components/button/SubmitButton";
 import * as Yup from "yup";
 import { Formik } from "formik";
-import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter";
-import { orderStatusTypeArray } from "@/interfaces";
+import { OrderStatusType, orderStatusTypeArray } from "@/interfaces";
 import { useAppDispatch, useAppSelector } from "@/hooks";
-import { fetchOrder } from "@/store/slices/orders/ordersThunks";
+import {
+  addShippingInfo,
+  fetchOrder,
+  setStatus,
+} from "@/store/slices/orders/ordersThunks";
+import toast from "react-hot-toast";
 
 interface IOrderProps {}
 
@@ -34,6 +39,8 @@ const OrderDetail = (props: IOrderProps) => {
 
   const order = useAppSelector((state) => state.orders.activeOrder);
   const loading = useAppSelector((state) => state.orders.loading);
+  const formLoading = useAppSelector((state) => state.orders.formLoading);
+  const error = useAppSelector((state) => state.orders.error);
 
   // Get id from url
   const router = useRouter();
@@ -45,17 +52,10 @@ const OrderDetail = (props: IOrderProps) => {
 
   //const options = orderStatusType; // ["preparando pedido para ser enviado", "enviado", "entregado", "cancelado"];
 
-  const shippingAddress = {
-    firstName: "juan alejandro",
-    lastName: "flores perez",
-    address: "avenida cuauhtemoc 830, narvarte poniente",
-    address2: "departamento 603",
-    city: "benito juarez",
-    estate: "ciudad de méxico",
-    country: "méxico",
-    zip: "3020",
-    phone: "4621651299",
-  };
+  useEffect(() => {
+    if (loading) toast.loading("Cargando orden");
+    else toast.dismiss();
+  }, [loading]);
 
   const [isEditing, setIsEditing] = useState(false);
 
@@ -69,26 +69,49 @@ const OrderDetail = (props: IOrderProps) => {
 
   const handleChangeStatus = (status: string) => {
     console.log(status);
+
+    if (status === "enviado" && !order?.guideNumber) {
+      setIsEditing(true);
+      return;
+    }
+
+    dispatch(
+      setStatus({
+        orderId,
+        status: status as OrderStatusType,
+      })
+    );
   };
 
-  const handleEditSubmit = (data: any) => {
-    console.log(data);
-    // TODO: dispatch update order
-    // TODO: Close modal after submit successfully
-    setIsEditing(false);
+  const handleEditSubmit = (data: {
+    guideNumber: string;
+    shippingProvider: string;
+  }) => {
+    console.log(formLoading, error);
+
+    dispatch(
+      addShippingInfo({
+        orderId: orderId,
+        shippingInfo: {
+          guideNumber: data.guideNumber,
+          shippingProvider: data.shippingProvider,
+        },
+        closeModal: () => setIsEditing(false),
+      })
+    );
   };
 
   if (!order || loading) return <div>Loading...</div>;
+
+  const shippingAddress = order.shippingAddress;
+
+  console.log(order);
 
   return (
     <>
       <BackArrow backTo="ordenes" />
       <div className={styles.orderPage}>
-        <div
-          style={{
-            width: "70%",
-          }}
-        >
+        <div className={styles.firstSection}>
           <Card>
             <CardSection line={false}>
               <CardHeader
@@ -102,14 +125,10 @@ const OrderDetail = (props: IOrderProps) => {
                   }}
                 >
                   <Status
-                    status={orderStatusTypeArray.findIndex(
-                      (status) => status === order.orderStatus
-                    )}
+                    status={order.orderStatus}
                     clickeable
                     onClick={handleChangeStatus}
-                    options={orderStatusTypeArray.map((option) =>
-                      capitalizeFirstLetter(option)
-                    )}
+                    options={orderStatusTypeArray}
                   />
                   <Menu>
                     <Button
@@ -123,11 +142,13 @@ const OrderDetail = (props: IOrderProps) => {
                 </div>
               </CardHeader>
             </CardSection>
+
             <CardSection line={false}>
               <Description>
                 {order.guideNumber ? (
                   <>
-                    Guía de rastreo <span>{order.guideNumber}</span> paqueteria{" "}
+                    Guía de rastreo{" "}
+                    <CopyOnClick>{order.guideNumber}</CopyOnClick> paqueteria{" "}
                     <span>{order.shippingProvider}</span> pagado el{" "}
                     <span>{order.paidAt}</span>
                   </>
@@ -322,34 +343,35 @@ const OrderDetail = (props: IOrderProps) => {
               <Formik
                 onSubmit={handleEditSubmit}
                 validationSchema={Yup.object({
-                  trackingNumber: Yup.string().required(
+                  guideNumber: Yup.string().required(
                     "El número de guía es requerido"
                   ),
-                  trackingService: Yup.string().required(
+                  shippingProvider: Yup.string().required(
                     "La paquetería es requerida"
                   ),
-                  shippingPrice: Yup.number().required(
-                    "El precio de envío es requerido"
-                  ),
+                  // shippingPrice: Yup.number().required(
+                  //   "El precio de envío es requerido"
+                  // ),
                 })}
                 initialValues={{
-                  trackingNumber: "",
-                  trackingService: "",
-                  shippingPrice: "",
+                  guideNumber: order.guideNumber || "",
+                  shippingProvider: order.shippingProvider || "",
+                  // shippingPrice: order.shippingPrice || "",
                 }}
                 validateOnMount
+                enableReinitialize
               >
                 {({ handleSubmit, isValid }) => (
                   <Form onSubmit={handleSubmit}>
                     <Form.Inputs>
                       <Input
-                        name="trackingNumber"
+                        name="guideNumber"
                         label="Número de guía"
                         type="text"
                         placeholder="Número de guía"
                       />
                       <Input
-                        name="trackingService"
+                        name="shippingProvider"
                         label="Paquetería"
                         type="select"
                         placeholder="Selecciona una paquetería"
@@ -362,12 +384,12 @@ const OrderDetail = (props: IOrderProps) => {
                           { value: "correos", label: "Correos" },
                         ]}
                       />
-                      <Input
+                      {/* <Input
                         name="shippingPrice"
                         label="Precio de envío"
                         type="number"
                         placeholder="Precio de envío"
-                      />
+                      /> */}
                     </Form.Inputs>
 
                     <Form.Buttons>
@@ -382,7 +404,7 @@ const OrderDetail = (props: IOrderProps) => {
                       <SubmitButton
                         position="right"
                         type="submit"
-                        loading={false}
+                        loading={formLoading}
                       >
                         <span>Guardar</span>
                       </SubmitButton>

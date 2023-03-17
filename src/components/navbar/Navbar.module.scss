@@ -12,7 +12,7 @@
     width: calc(100% - 4rem);
     background-color: colors.$white;
     border-bottom: 1px solid colors.$bc-hover;
-    z-index: 10;
+    z-index: 3;
     @include mixins.respond(from-tab-port) {
         width: calc(100% - 19rem);
     }

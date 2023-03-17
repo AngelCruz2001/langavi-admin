@@ -30,26 +30,22 @@ export async function getDiscount(id: string): Promise<IDiscount | null> {
 
 export async function editDiscount({
   id,
-  code,
-  percentaje,
-  quantity,
+  discountInfo,
 }: {
   id: string;
-  code: string;
-  percentaje: string;
-  quantity: string;
+  discountInfo: {
+    code: string;
+    percentaje?: number;
+    quantity?: number;
+  };
 }): Promise<null | IDiscount> {
   try {
     await connect();
-    const discount = await Discount.findByIdAndUpdate(
-      id,
-      {
-        code,
-        percentaje,
-        quantity,
-      },
-      { new: true }
-    );
+
+    const discount = await Discount.findByIdAndUpdate(id, discountInfo, {
+      new: true,
+    });
+
     await disconnect();
     return discount;
   } catch (error) {
@@ -72,5 +68,18 @@ export async function createDiscount(
     await disconnect();
     console.error({ error });
     return null;
+  }
+}
+
+export async function deleteDiscount(id: string): Promise<boolean> {
+  try {
+    await connect();
+    await Discount.findByIdAndDelete(id);
+    await disconnect();
+    return true;
+  } catch (error) {
+    await disconnect();
+    console.error({ error });
+    return false;
   }
 }

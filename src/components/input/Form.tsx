@@ -15,9 +15,25 @@ export const Form = ({
   );
 };
 
-const FormInputs = ({ children }: React.PropsWithChildren<{}>) => {
+interface IFormInputsProps {
+  withGap?: boolean;
+}
+
+const FormInputs = ({
+  children,
+  withGap = true,
+}: React.PropsWithChildren<IFormInputsProps>) => {
   {
-    return <div className={styles.formInputs}>{children}</div>;
+    return (
+      <div
+        className={styles.formInputs}
+        style={{
+          gap: withGap ? "2rem" : ".7rem",
+        }}
+      >
+        {children}
+      </div>
+    );
   }
 };
 

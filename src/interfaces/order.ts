@@ -61,9 +61,23 @@ export interface IDisplayOrder {
   provider: string;
 }
 
-
-export interface IOrderResponse { 
-  orders: IOrder[];
+export interface IOrderResponse {
+  orders: IOrdersSingle[];
   currentPage: number;
   totalPages: number;
+}
+
+export interface IOrdersSingle {
+  _id: string;
+  total: number;
+  numberOfItems: number;
+  paidAt: string;
+  orderStatus: string;
+  orderNumber: string;
+  provider: string;
+  shippingAddress: string;
+}
+
+export interface IEditOrderResponse {
+  order: IOrder;
 }

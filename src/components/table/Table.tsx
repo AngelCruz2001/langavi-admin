@@ -27,6 +27,7 @@ interface ITableRowProps {
 
 interface ITableComposition {
   children: React.ReactNode;
+  copyOnClick?: boolean;
 }
 
 export const Table = ({
@@ -63,11 +64,15 @@ export const Table = ({
       <div className={styles.content}>
         {headers.map((header, indexHeader) => (
           <div
-            key={header}
+            key={header + indexHeader}
             className={styles.column}
-            style={{
-              width: proportion[indexHeader],
-            }}
+            style={
+              {
+                // width: proportion[indexHeader],
+                "--width": proportion[indexHeader],
+                "--itemsNumber": headers.length,
+              } as React.CSSProperties
+            }
           >
             <div
               className={styles.header}
@@ -116,7 +121,7 @@ const Row = ({ children, ...props }: ITableRowProps) => {
     </div>
   );
 };
-const Cell = ({ children, ...props }: ITableComposition) => {
+const Cell = ({ children, copyOnClick, ...props }: ITableComposition) => {
   return <>{children}</>;
 };
 

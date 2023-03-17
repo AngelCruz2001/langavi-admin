@@ -17,3 +17,11 @@
         color: colors.$primary;
     }
 }
+
+.copyOnClick { 
+    cursor: pointer;
+    color: colors.$primary;
+    font-size: variables.$font-size-small;
+    font-weight: 600;
+    text-decoration: underline;
+}

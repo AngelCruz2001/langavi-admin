@@ -24,20 +24,20 @@ export const Sidebar = () => {
     },
     {
       iconName: "tag",
-      label: "Productos",
-      path: "/admin/products",
+      label: "Cupones",
+      path: "/admin/discounts",
     },
-    {
-      iconName: "users",
+    // {
+    //   iconName: "users",
 
-      label: "Clientes",
-      path: "/clientes",
-    },
-    {
-      iconName: "settings",
-      label: "Configuración",
-      path: "/admin/settings",
-    },
+    //   label: "Clientes",
+    //   path: "/clientes",
+    // },
+    // {
+    //   iconName: "settings",
+    //   label: "Configuración",
+    //   path: "/admin/settings",
+    // },
   ];
 
   return (

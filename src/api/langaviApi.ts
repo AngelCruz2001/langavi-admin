@@ -1,6 +1,7 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 
 const langaviApi = axios.create({
+  // baseURL: "http://192.168.86.46:3000/api",
   baseURL: "http://localhost:3000/api",
   headers: {
     "Content-Type": "application/json",

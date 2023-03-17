@@ -1,8 +1,14 @@
-.orderPage { 
+@use "@/styles/abstracts/mixins.scss";
 
-
+.orderPage {
 }
 
-.section { 
+.firstSection {
+    @include mixins.respond(from-tab-port) {
+        width: 70%;
+    }
+}
+
+.section {
     margin-top: 1rem;
 }

@@ -17,7 +17,7 @@ type Data =
       discount: IDiscount;
     };
 
-export default async function handler(
+export default async function (
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
@@ -44,7 +44,9 @@ export default async function handler(
           error: "Discounts can only have either quantity or percentaje.",
         });
       try {
+        console.log(body);
         const newDiscount = await createDiscount(body);
+        console.log(newDiscount);
         if (!newDiscount)
           return res.status(401).json({
             error: "Check your req body or server console.",

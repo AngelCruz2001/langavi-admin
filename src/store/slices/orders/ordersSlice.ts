@@ -1,5 +1,5 @@
-import { IOrder } from "@/interfaces";
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { IOrder, IOrdersSingle } from "@/interfaces";
+import { createSlice } from "@reduxjs/toolkit";
 import {
   addShippingInfo,
   fetchOrder,
@@ -8,9 +8,10 @@ import {
 } from "./ordersThunks";
 
 interface IOrdersState {
-  ordersList: IOrder[];
+  ordersList: IOrdersSingle[];
   currentPage: number;
   totalPages: number;
+  formLoading: boolean;
   loading: boolean;
   error: string | null;
   activeOrder: IOrder | null;
@@ -18,6 +19,7 @@ interface IOrdersState {
 
 const initialState: IOrdersState = {
   ordersList: [],
+  formLoading: false,
   loading: false,
   error: null,
   currentPage: 0,
@@ -36,31 +38,30 @@ const ordersSlice = createSlice({
     },
   },
   extraReducers(builder) {
-    builder.addCase("orders/fetchOrders/pending", (state) => {
-      state.loading = true;
-      state.error = null;
-    });
     builder
       .addCase(fetchOrders.fulfilled, (state, action) => {
         state.ordersList = action.payload;
         state.loading = false;
         state.error = null;
       })
+      .addCase(fetchOrders.pending, (state) => {
+        state.loading = true;
+      })
       .addCase(fetchOrder.fulfilled, (state, action) => {
         state.activeOrder = action.payload;
         state.loading = false;
         state.error = null;
       })
+      .addCase(fetchOrder.pending, (state) => {
+        state.loading = true;
+      })
       .addCase(addShippingInfo.fulfilled, (state, action) => {
         state.activeOrder = action.payload;
-        state.ordersList = state.ordersList.map((order) => {
-          if (order._id === action.payload._id) {
-            return action.payload;
-          }
-          return order;
-        });
-        state.loading = false;
         state.error = null;
+        state.formLoading = false;
+      })
+      .addCase(addShippingInfo.pending, (state) => {
+        state.formLoading = true;
       })
       .addCase(setStatus.fulfilled, (state, action) => {
         state.ordersList = state.ordersList.map((order) => {
@@ -69,6 +70,7 @@ const ordersSlice = createSlice({
           }
           return order;
         });
+        state.activeOrder = action.payload;
         state.loading = false;
         state.error = null;
       });

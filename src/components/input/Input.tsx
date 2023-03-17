@@ -7,8 +7,12 @@ interface IInputProps {
   label: string;
   type?: string;
   placeholder?: string;
-  options?: { value: string; label: string }[];
+  options?: { value: string | number; label: string }[];
   width?: string;
+  style?: React.CSSProperties;
+  withLabel?: boolean;
+  withPlaceholder?: boolean;
+  inputPadding?: string;
 }
 
 export const Input = ({
@@ -18,6 +22,10 @@ export const Input = ({
   placeholder = "",
   options,
   width,
+  style,
+  withLabel = true,
+  withPlaceholder = false,
+  inputPadding,
 }: IInputProps) => {
   const [isFocused, setIsFocused] = useState(false);
 
@@ -29,10 +37,12 @@ export const Input = ({
       type={type}
       className={styles.field}
       id={name}
+      placeholder={withPlaceholder ? placeholder : ""}
+      style={{
+        padding: inputPadding ? inputPadding : "",
+      }}
     />
   );
-
-  // Get active field
 
   if (type === "select") {
     Input = (
@@ -55,11 +65,14 @@ export const Input = ({
       className={styles.input}
       style={{
         width: width ? width : "100%",
+        ...style,
       }}
     >
-      <label htmlFor={name} className={styles.label}>
-        {label}
-      </label>
+      {withLabel && (
+        <label htmlFor={name} className={styles.label}>
+          {label}
+        </label>
+      )}
       <span
         className={`${styles.fieldContainer} ${
           isFocused ? styles.focused : ""
