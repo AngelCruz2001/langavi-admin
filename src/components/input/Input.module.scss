@@ -1,10 +1,14 @@
 @use "@/styles/colors.scss";
+@use "@/styles/abstracts/mixins.scss";
 
 .form {
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
-    min-width: 40rem;
+
+    @include mixins.respond(from-tab-port) {
+        // min-width: 40rem;
+    }
 }
 
 .formInputs {
@@ -21,12 +25,11 @@
     margin-top: 1rem;
 }
 
-
 .input {
     position: relative;
     display: flex;
     flex-direction: column;
-    label {
+    .label {
         position: absolute;
         top: -1.5rem;
         left: 0;
@@ -61,5 +64,78 @@
         color: colors.$error;
         font-size: 0.8rem;
         margin-top: 0.5rem;
+    }
+}
+
+.switch {
+    display: flex;
+    width: 3rem;
+    height: 1.5rem;
+    border-radius: 1rem;
+    position: relative;
+    background-color: darken(colors.$bc-hover, 15%);
+    // border: 1px solid colors.$secondary-light;
+    transition: all 0.5s ease-in-out;
+
+    cursor: pointer;
+
+    &.checked {
+        background-color: colors.$primary;
+    }
+
+    .switchButton {
+        position: absolute;
+        top: 0.1rem;
+        left: 0;
+        width: 1.3rem;
+        height: 1.3rem;
+        border: 1px solid colors.$secondary-light;
+        border-radius: 50%;
+        background-color: white;
+        transition: all 0.2s ease-in-out;
+    }
+}
+
+.typePicker {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    label {
+        position: absolute;
+        top: -1.5rem;
+        left: 0;
+        font-size: 0.9rem;
+        color: colors.$secondary;
+    }
+
+    .elementsContainer {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .type {
+        font-size: 0.8rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        border: 1px solid colors.$bc-hover;
+        background-color: colors.$bc;
+        border-radius: 1rem;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            color: colors.$primary;
+        }
+    }
+
+    .active {
+        background-color: colors.$primary;
+        color: colors.$white;
+        font-weight: 600;
+
+        &:hover {
+            color: colors.$white;
+        }
     }
 }

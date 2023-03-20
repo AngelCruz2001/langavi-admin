@@ -1,45 +1,56 @@
 import styles from "./Status.module.scss";
-import React, { useEffect, useMemo } from "react";
-import { Card, Modal, Button } from "@/components";
+import React, { useMemo } from "react";
+import { Button } from "@/components";
 import { BehindBox } from "../behindBox/BehindBox";
+import { orderStatusTypeArray } from "@/interfaces";
+import { capitalizeFirstLetter } from "../../utils/capitalizeFirstLetter";
 
 interface StatusProps {
-  status: number;
+  status: string;
   options?: string[];
   style?: React.CSSProperties;
   clickeable?: boolean;
   className?: string;
+  onClick?: (status: string) => void;
 }
 
-export const Status = ({ clickeable = false, ...props }: StatusProps) => {
+export const Status = ({
+  clickeable = false,
+  options = orderStatusTypeArray,
+  onClick,
+  status,
+  ...props
+}: StatusProps) => {
   const [showModal, setShowModal] = React.useState(false);
 
-  const [status, setStatus] = React.useState(props.status);
+  const statusNumber = useMemo(() => {
+    return options.indexOf(status);
+  }, [status, options]);
 
   const handleToggleModal = () => {
     setShowModal(!showModal);
   };
 
-  const handleSetStatus = (status: number) => {
+  const handleSetStatus = (status: string) => {
     setShowModal(!showModal);
-    setStatus(status);
-    console.log(status);
+
+    onClick && onClick(status);
   };
 
   return (
     <div className={styles.container}>
       {clickeable ? (
         <Button onClick={handleToggleModal}>
-          <Content {...props} status={status} />
+          <Content {...props} status={statusNumber} options={options} />
         </Button>
       ) : (
-        <Content {...props} status={status} />
+        <Content {...props} status={statusNumber} options={options} />
       )}
 
       <BehindBox show={showModal} setShow={setShowModal}>
-        {props.options?.map((option, index) => (
-          <Button key={index} onClick={() => handleSetStatus(index)}>
-            <Content {...props} status={index} />
+        {options.map((option, index) => (
+          <Button key={index} onClick={() => handleSetStatus(option)}>
+            <Content {...props} status={index} options={options} />
           </Button>
         ))}
       </BehindBox>
@@ -47,21 +58,26 @@ export const Status = ({ clickeable = false, ...props }: StatusProps) => {
   );
 };
 
-const Content = ({
-  status = 0,
-  options = ["Enviado", "Entregado", "Preparando"],
-  ...props
-}) => {
+interface ContentProps {
+  status: number;
+  options: string[];
+  style?: React.CSSProperties;
+  className?: string;
+}
+
+const Content = ({ options, status = 0, ...props }: ContentProps) => {
   const styleStatus = useMemo(() => {
     switch (status) {
       case 0:
-        return styles.success;
+        return styles.standby;
       case 1:
-        return styles.error;
+        return styles.progress;
       case 2:
-        return styles.progress;
+        return styles.send;
+      case 3:
+        return styles.delivered;
       default:
-        return styles.progress;
+        return styles.error;
     }
   }, [status]);
 
@@ -76,7 +92,7 @@ const Content = ({
         className={`${styles.statusCircle} ${styleStatus}
           `}
       />
-      <p>{options[status]}</p>
+      <p>{capitalizeFirstLetter(options[status])}</p>
     </div>
   );
 };

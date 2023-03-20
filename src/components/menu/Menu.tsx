@@ -25,6 +25,7 @@ export const Menu = (props: IMenuProps) => {
       <BehindBox
         show={showModal}
         setShow={setShowModal}
+        noPadding
         customStyles={{
           left: "-4rem",
         }}

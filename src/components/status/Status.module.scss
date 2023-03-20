@@ -13,15 +13,19 @@
     height: 0.6rem;
     border-radius: 50%;
 
-    &.success {
-        background-color: colors.$green-ok;
+    &.standby {
+        background-color: colors.$standby;
     }
 
     &.progress {
         background-color: colors.$warning;
     }
 
-    &.error {
-        background-color: colors.$error;
+    &.send {
+        background-color: colors.$send;
+    }
+
+    &.delivered {
+        background-color: colors.$green-ok;
     }
 }

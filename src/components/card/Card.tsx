@@ -5,23 +5,33 @@ interface ICardProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   fullHeight?: boolean;
   styles?: React.CSSProperties;
+  noPadding?: boolean;
+  center?: boolean;
 }
 
 export const Card = ({
   children,
   className,
   fullHeight,
+  center,
   ...props
 }: ICardProps) => {
   return (
     <div
-      style={props.styles}
-      className={`${styles.card} ${className}
+      className={styles.cardContainer}
+      style={{
+        padding: props.noPadding ? "0" : "",
+      }}
+    >
+      <div
+        style={props.styles}
+        className={`${styles.card} ${className}
     ${fullHeight ? styles.fullHeight : ""}
     `}
-      {...props}
-    >
-      {children}
+        {...props}
+      >
+        {children}
+      </div>
     </div>
   );
 };

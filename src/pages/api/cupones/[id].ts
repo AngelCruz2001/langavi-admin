@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import {
   createDiscount,
+  deleteDiscount,
   editDiscount,
   getDiscount,
 } from "@/server/helpers/discounts";
@@ -13,9 +14,12 @@ type Data =
     }
   | {
       error: string;
+    }
+  | {
+      message: string;
     };
 
-export default async function (
+export default async function handler (
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
@@ -48,10 +52,28 @@ export default async function (
             error: "Discounts can only have either quantity or percentaje.",
           });
         try {
-          const discount = await editDiscount({ ...body, id });
+          const discount = await editDiscount({ id, discountInfo: body });
+
           if (!discount) return res.status(400).json({ error: "Not found" });
+
           return res.status(201).json({
             discount,
+          });
+        } catch (error) {
+          console.error({ error });
+          return res
+            .status(500)
+            .json({ error: "Server error. Check console for detailed error" });
+        }
+      }
+
+      case "DELETE": {
+        try {
+          const discount = await deleteDiscount(id);
+          if (!discount) return res.status(400).json({ error: "Not found" });
+
+          return res.status(201).json({
+            message: "Discount deleted successfully",
           });
         } catch (error) {
           console.error({ error });

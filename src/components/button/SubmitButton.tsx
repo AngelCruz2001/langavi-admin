@@ -3,10 +3,10 @@ import styles from "./Button.module.scss";
 import { motion } from "framer-motion";
 
 interface ISubmitButtonProps {
-  type: "submit" | "reset" | "button";
+  type?: "submit" | "reset" | "button";
   onClick?: (data: any) => void;
-  position: "left" | "right";
-  variant?: "submit" | "cancel";
+  position?: "left" | "right";
+  variant?: "submit" | "cancel" | "login";
   disabled?: boolean;
   data?: any;
   loading?: boolean;
@@ -14,9 +14,9 @@ interface ISubmitButtonProps {
 
 export const SubmitButton = ({
   children,
-  type,
+  type = "submit",
   onClick,
-  position,
+  position = "right",
   variant = "submit",
   disabled = false,
   loading = false,
@@ -24,9 +24,7 @@ export const SubmitButton = ({
 }: React.PropsWithChildren<ISubmitButtonProps>) => {
   return (
     <button
-      className={`${styles.submitButton} ${
-        variant === "cancel" ? styles.cancel : ""
-      }      `}
+      className={`${styles.submitButton} ${styles[variant]}`}
       style={{
         float: "right",
       }}

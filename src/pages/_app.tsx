@@ -6,15 +6,22 @@ import { NextUIProvider } from "@nextui-org/react";
 import { Provider } from "react-redux";
 import store from "@/store";
 const inter = Inter({ subsets: ["latin"] });
+import { Toaster } from "react-hot-toast";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <main className={inter.className}>
       <Provider store={store}>
         <NextUIProvider>
-          <ProtectedPage>
+          <Toaster position="top-right" reverseOrder={false} />
+
+          {store.getState().auth.isAuthenticated ? (
+            <ProtectedPage>
+              <Component {...pageProps} />
+            </ProtectedPage>
+          ) : (
             <Component {...pageProps} />
-          </ProtectedPage>
+          )}
         </NextUIProvider>
       </Provider>
     </main>

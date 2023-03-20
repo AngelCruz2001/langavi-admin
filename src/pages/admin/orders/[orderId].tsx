@@ -15,124 +15,47 @@ import {
   Table,
   Input,
   Form,
+  CopyOnClick,
 } from "@/components";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { SubmitButton } from "../../../components/button/SubmitButton";
 import * as Yup from "yup";
 import { Formik } from "formik";
+import { OrderStatusType, orderStatusTypeArray } from "@/interfaces";
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import {
+  addShippingInfo,
+  fetchOrder,
+  setStatus,
+} from "@/store/slices/orders/ordersThunks";
+import toast from "react-hot-toast";
 
 interface IOrderProps {}
 
 const OrderDetail = (props: IOrderProps) => {
+  const dispatch = useAppDispatch();
+
+  const order = useAppSelector((state) => state.orders.activeOrder);
+  const loading = useAppSelector((state) => state.orders.loading);
+  const formLoading = useAppSelector((state) => state.orders.formLoading);
+  const error = useAppSelector((state) => state.orders.error);
+
   // Get id from url
   const router = useRouter();
-  const { orderId } = router.query;
+  const { orderId } = router.query as { orderId: string };
 
-  const order = {
-    _id: "63bf35734eda33b77a72ef70",
-    orderNumber: "T53710248",
-    clientId: "63bf35734eda33b77a72ef6d",
-    shippingAddress: {
-      firstName: "juan alejandro",
-      lastName: "flores perez",
-      address: "avenida cuauhtemoc 830, narvarte poniente",
-      address2: "departamento 603",
-      city: "benito juarez",
-      estate: "ciudad de méxico",
-      country: "méxico",
-      zip: "3020",
-      phone: "4621651299",
-      _id: "63bf35734eda33b77a72ef71",
-    },
-    billingAddress: {
-      firstName: "juan alejandro",
-      lastName: "flores perez",
-      address: "avenida cuauhtemoc 830, narvarte poniente",
-      address2: "departamento 603",
-      city: "benito juarez",
-      estate: "ciudad de méxico",
-      country: "méxico",
-      zip: "3020",
-      phone: "4621651299",
-      _id: "63bf35734eda33b77a72ef72",
-    },
-    products: [
-      {
-        title: "chocolate blanco artesanal",
-        variantName: "18g",
-        slug: "chocolate_blanco_artesanal",
-        image:
-          "https://langavi-product-pictures.s3.amazonaws.com/chocolate_blanco_artesanal_18g_1663629800710.png",
-        price: 270,
-        quantity: 1,
-        description: "Caja con 18 barras",
-        _id: "63bf35734eda33b77a72ef73",
-      },
-      {
-        title: "chocolate amargo 73% cacao",
-        variantName: "18g",
-        slug: "chocolate_amargo_73-cacao",
-        image:
-          "https://langavi-product-pictures.s3.amazonaws.com/chocolate_amargo_73-cacao_18g_1663629227098.png",
-        price: 270,
-        quantity: 1,
-        description: "Caja con 18 barras",
-        _id: "63bf35734eda33b77a72ef74",
-      },
-      {
-        title: "chocolate de leche premium",
-        variantName: "18g",
-        slug: "chocolate_de-leche_premium",
-        image:
-          "https://langavi-product-pictures.s3.amazonaws.com/chocolate_de-leche_premium_18g_1663628487047.png",
-        price: 270,
-        quantity: 1,
-        description: "Caja con 18 barras",
-        _id: "63bf35734eda33b77a72ef75",
-      },
-      {
-        title: "chocolate amargo premium",
-        variantName: "18g",
-        slug: "chocolate_amargo_premium",
-        image:
-          "https://langavi-product-pictures.s3.amazonaws.com/chocolate_amargo_premium_18g_1663627587138.png",
-        price: 270,
-        quantity: 1,
-        description: "Caja con 18 barras",
-        _id: "63bf35734eda33b77a72ef76",
-      },
-    ],
-    numberOfItems: 4,
-    subtotal: 1080,
-    tax: {
-      percent: "0.16",
-      amount: "949.2",
-      _id: "63bf35734eda33b77a72ef77",
-    },
-    total: 1080,
-    paidAt: "11 de enero de 2023",
-    transactionId: "1D903767N30929927",
-    orderStatus: "preparando pedido para ser enviado",
-    provider: "paypal",
-    discounts: [],
-    shippingPrice: 50,
-  };
+  useEffect(() => {
+    if (orderId) dispatch(fetchOrder(orderId));
+  }, [dispatch, orderId]);
 
-  const options = ["Enviado", "Entregado", "Preparando"];
+  //const options = orderStatusType; // ["preparando pedido para ser enviado", "enviado", "entregado", "cancelado"];
 
-  const shippingAddress = {
-    firstName: "juan alejandro",
-    lastName: "flores perez",
-    address: "avenida cuauhtemoc 830, narvarte poniente",
-    address2: "departamento 603",
-    city: "benito juarez",
-    estate: "ciudad de méxico",
-    country: "méxico",
-    zip: "3020",
-    phone: "4621651299",
-  };
+  useEffect(() => {
+    if (loading) toast.loading("Cargando orden");
+    else toast.dismiss();
+  }, [loading]);
 
   const [isEditing, setIsEditing] = useState(false);
 
@@ -144,20 +67,51 @@ const OrderDetail = (props: IOrderProps) => {
     setIsEditing(true);
   };
 
-  const handleEditSubmit = (data: any) => {
-    console.log(data);
-    setIsEditing(false);
+  const handleChangeStatus = (status: string) => {
+    console.log(status);
+
+    if (status === "enviado" && !order?.guideNumber) {
+      setIsEditing(true);
+      return;
+    }
+
+    dispatch(
+      setStatus({
+        orderId,
+        status: status as OrderStatusType,
+      })
+    );
   };
+
+  const handleEditSubmit = (data: {
+    guideNumber: string;
+    shippingProvider: string;
+  }) => {
+    console.log(formLoading, error);
+
+    dispatch(
+      addShippingInfo({
+        orderId: orderId,
+        shippingInfo: {
+          guideNumber: data.guideNumber,
+          shippingProvider: data.shippingProvider,
+        },
+        closeModal: () => setIsEditing(false),
+      })
+    );
+  };
+
+  if (!order || loading) return <div>Loading...</div>;
+
+  const shippingAddress = order.shippingAddress;
+
+  console.log(order);
 
   return (
     <>
       <BackArrow backTo="ordenes" />
       <div className={styles.orderPage}>
-        <div
-          style={{
-            width: "70%",
-          }}
-        >
+        <div className={styles.firstSection}>
           <Card>
             <CardSection line={false}>
               <CardHeader
@@ -170,7 +124,12 @@ const OrderDetail = (props: IOrderProps) => {
                     gap: "1.5rem",
                   }}
                 >
-                  <Status status={0} clickeable options={options} />
+                  <Status
+                    status={order.orderStatus}
+                    clickeable
+                    onClick={handleChangeStatus}
+                    options={orderStatusTypeArray}
+                  />
                   <Menu>
                     <Button
                       onClick={handleEdit}
@@ -183,10 +142,22 @@ const OrderDetail = (props: IOrderProps) => {
                 </div>
               </CardHeader>
             </CardSection>
+
             <CardSection line={false}>
               <Description>
-                Guía de rastreo <span>1Z1234567890123456</span> paqueteria DHL
-                pagado el {order.paidAt}
+                {order.guideNumber ? (
+                  <>
+                    Guía de rastreo{" "}
+                    <CopyOnClick>{order.guideNumber}</CopyOnClick> paqueteria{" "}
+                    <span>{order.shippingProvider}</span> pagado el{" "}
+                    <span>{order.paidAt}</span>
+                  </>
+                ) : (
+                  <>
+                    Orden sin datos de envio, por favor actualiza los datos,
+                    pagada el <span>{order.paidAt}</span>
+                  </>
+                )}
               </Description>
               <List
                 listTitle="Detalles"
@@ -304,7 +275,11 @@ const OrderDetail = (props: IOrderProps) => {
                   {
                     label: "Descuentos",
                     value:
-                      order.discounts.length > 0 ? order.discounts[0] : "-",
+                      order.discounts.length > 0
+                        ? `${[
+                            ...order.discounts.map((discount) => discount.code),
+                          ]} `
+                        : "No se aplicaron descuentos",
                   },
                   {
                     label: "Impuestos",
@@ -368,35 +343,38 @@ const OrderDetail = (props: IOrderProps) => {
               <Formik
                 onSubmit={handleEditSubmit}
                 validationSchema={Yup.object({
-                  trackingNumber: Yup.string().required(
+                  guideNumber: Yup.string().required(
                     "El número de guía es requerido"
                   ),
-                  trackingService: Yup.string().required(
+                  shippingProvider: Yup.string().required(
                     "La paquetería es requerida"
                   ),
-                  shippingPrice: Yup.number().required(
-                    "El precio de envío es requerido"
-                  ),
+                  // shippingPrice: Yup.number().required(
+                  //   "El precio de envío es requerido"
+                  // ),
                 })}
                 initialValues={{
-                  trackingNumber: "",
-                  shippingPrice: "",
+                  guideNumber: order.guideNumber || "",
+                  shippingProvider: order.shippingProvider || "",
+                  // shippingPrice: order.shippingPrice || "",
                 }}
                 validateOnMount
+                enableReinitialize
               >
                 {({ handleSubmit, isValid }) => (
                   <Form onSubmit={handleSubmit}>
                     <Form.Inputs>
                       <Input
-                        name="trackingNumber"
+                        name="guideNumber"
                         label="Número de guía"
                         type="text"
                         placeholder="Número de guía"
                       />
                       <Input
-                        name="trackingService"
+                        name="shippingProvider"
                         label="Paquetería"
                         type="select"
+                        placeholder="Selecciona una paquetería"
                         options={[
                           { value: "dhl", label: "DHL" },
                           { value: "fedex", label: "Fedex" },
@@ -406,12 +384,12 @@ const OrderDetail = (props: IOrderProps) => {
                           { value: "correos", label: "Correos" },
                         ]}
                       />
-                      <Input
+                      {/* <Input
                         name="shippingPrice"
                         label="Precio de envío"
                         type="number"
                         placeholder="Precio de envío"
-                      />
+                      /> */}
                     </Form.Inputs>
 
                     <Form.Buttons>
@@ -426,7 +404,7 @@ const OrderDetail = (props: IOrderProps) => {
                       <SubmitButton
                         position="right"
                         type="submit"
-                        loading={false}
+                        loading={formLoading}
                       >
                         <span>Guardar</span>
                       </SubmitButton>

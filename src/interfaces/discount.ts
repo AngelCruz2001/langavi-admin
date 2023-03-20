@@ -13,3 +13,7 @@ export interface IOrderDiscount {
   quantity?: number;
   percentaje?: number;
 }
+
+export interface IDiscountResponse {
+  discounts: IDiscount[];
+}

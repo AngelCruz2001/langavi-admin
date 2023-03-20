@@ -19,7 +19,12 @@ export const PaymentProcessor = ({ pickImage }: IPaymentProcessorProps) => {
 
   return (
     <div className={styles.PaymentProcessor}>
-      <Image src={providerImage} alt="Logotipo del proveedor de pagos" />
+      <Image
+        src={providerImage}
+        alt="Logotipo del proveedor de pagos"
+        width={40}
+        height={40}
+      />
     </div>
   );
 };

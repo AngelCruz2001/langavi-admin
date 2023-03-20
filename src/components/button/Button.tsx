@@ -6,6 +6,7 @@ interface IButtonProps {
   withIcon?: boolean;
   iconName?: string;
   border?: boolean;
+  variant?: "primary" | "danger";
   onClick: (e: any) => void;
 }
 
@@ -14,15 +15,17 @@ export const Button = ({
   withIcon = false,
   iconName = "plus",
   border,
+  variant,
   onClick,
 }: React.PropsWithChildren<IButtonProps>) => {
+  const buttonClasses = `
+    ${styles.button}
+    ${withIcon ? styles.withIcon : ""}
+    ${border ? styles.border : ""}
+    ${variant ? styles[variant] : ""}
+    `;
   return (
-    <button
-      onClick={onClick}
-      className={`${styles.button} ${withIcon ? styles.withIcon : ""} ${
-        border ? styles.border : ""
-      }`}
-    >
+    <button onClick={onClick} className={buttonClasses}>
       {withIcon && <Svg iconName={iconName} />}
       {children}
     </button>
