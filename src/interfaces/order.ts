@@ -1,3 +1,4 @@
+import { Types } from "mongoose";
 import { ObjectValues } from ".";
 import { IOrderDiscount } from "./discount";
 import { PaymentMethods } from "./payments";
@@ -28,7 +29,7 @@ export interface IAddress {
 
 export interface IOrder {
   _id: string;
-  clientId: string;
+  clientId: string | Types.ObjectId;
   shippingAddress: IAddress;
   billingAddress: IAddress;
   products: IProductOrder[];
