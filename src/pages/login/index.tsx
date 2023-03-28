@@ -15,6 +15,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { startLogin } from "@/store/slices/auth/authThunks";
+import Image from "next/image";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -30,7 +31,8 @@ const Login = () => {
         <div className={styles.login}>
           <CardHeader center>
             <div className={styles.headerContainer}>
-              <ProfileBox />
+              {/* <ProfileBox /> */}
+              <Image alt='L' src='https://www.langavi.com/_next/image?url=%2Flogo.webp&w=640&q=75' width={80} height={80} />
               <h1>¡Bienvenido de vuelta! </h1>
               <p>
                 Que bueno verte 👋🏼 <br />
