@@ -22,6 +22,7 @@ export default async function (
   switch (method) {
     case "POST": {
       const { nickname, password } = req.body;
+      console.log({ nickname, password });
       //   const token = createToken(nickname);
       const user = await getUser(nickname);
       if (!user) {

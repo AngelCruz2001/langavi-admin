@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { orderStatusTypeArray } from "@/interfaces";
 import { fetchOrders } from "@/store/slices/orders/ordersThunks";
+import styles from './Orders.module.scss'
 
 const Orders: NextPage = () => {
   const dispatch = useAppDispatch();
@@ -76,11 +77,11 @@ const Orders: NextPage = () => {
                   {order.numberOfItems > 1 ? "piezas" : "pieza"}
                 </Table.Cell>
                 <Table.Cell>
-                  <p>{order.shippingAddress}</p>
+                  <p className={styles.shortAddress} >{order.shippingAddress}</p>
                 </Table.Cell>
-                <Table.Cell>{order.total}</Table.Cell>
+                <Table.Cell>${order.total}</Table.Cell>
                 <Table.Cell>
-                  <PaymentProcessor pickImage={"Stripe"} />
+                  <PaymentProcessor pickImage={order.provider === 'stripe' ? 'Stripe' : 'Paypal'} />
                 </Table.Cell>
               </Table.Row>
             ))}

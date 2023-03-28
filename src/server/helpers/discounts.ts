@@ -41,6 +41,11 @@ export async function editDiscount({
 }): Promise<null | IDiscount> {
   try {
     await connect();
+    if (discountInfo.percentaje) {
+      discountInfo.quantity = 0;
+    } else {
+      discountInfo.percentaje = 0;
+    }
 
     const discount = await Discount.findByIdAndUpdate(id, discountInfo, {
       new: true,

@@ -32,7 +32,7 @@ import {
 } from "@/store/slices/orders/ordersThunks";
 import toast from "react-hot-toast";
 
-interface IOrderProps {}
+interface IOrderProps { }
 
 const OrderDetail = (props: IOrderProps) => {
   const dispatch = useAppDispatch();
@@ -105,7 +105,7 @@ const OrderDetail = (props: IOrderProps) => {
 
   const shippingAddress = order.shippingAddress;
 
-  console.log(order);
+  console.log({ shippingAddress });
 
   return (
     <>
@@ -277,8 +277,8 @@ const OrderDetail = (props: IOrderProps) => {
                     value:
                       order.discounts.length > 0
                         ? `${[
-                            ...order.discounts.map((discount) => discount.code),
-                          ]} `
+                          ...order.discounts.map((discount) => discount.code),
+                        ]} `
                         : "No se aplicaron descuentos",
                   },
                   {

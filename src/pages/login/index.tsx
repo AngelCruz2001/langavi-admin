@@ -19,7 +19,7 @@ import { startLogin } from "@/store/slices/auth/authThunks";
 const Login = () => {
   const dispatch = useAppDispatch();
 
-  const handleLogin = (values: { email: string; password: string }) => {
+  const handleLogin = (values: { nickname: string; password: string }) => {
     // console.log(values);
     dispatch(startLogin(values));
   };
@@ -42,13 +42,12 @@ const Login = () => {
             <div className={styles.form}>
               <Formik
                 initialValues={{
-                  email: "",
+                  nickname: "",
                   password: "",
                 }}
                 validationSchema={Yup.object({
-                  email: Yup.string()
-                    .email("Correo electrónico inválido")
-                    .required("Correo electrónico requerido"),
+                  nickname: Yup.string()
+                    .required("Nombre de usuario requerido"),
                   password: Yup.string()
                     .min(8, "Mínimo 8 caracteres")
                     .required("Se esperaba una contraseña"),
@@ -59,10 +58,9 @@ const Login = () => {
                   <Form onSubmit={handleSubmit}>
                     <Form.Inputs withGap={false}>
                       <Input
-                        name="email"
-                        label="Correo electrónico"
-                        type="email"
-                        placeholder="Correo electrónico"
+                        name="nickname"
+                        label="Nombre de usuario"
+                        placeholder="nombre de usuario"
                         withLabel={false}
                         withPlaceholder={true}
                         inputPadding="0.5rem"

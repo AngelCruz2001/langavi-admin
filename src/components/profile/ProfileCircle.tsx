@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./Profile.module.scss";
 import { BehindBox, Button } from "@/components";
 import { useRouter } from "next/router";
+import Cookies from 'js-cookie';
 
 interface IProfileCircleProps {
   initial?: string;
@@ -18,6 +19,7 @@ export const ProfileCircle = ({ initial = "A" }: IProfileCircleProps) => {
 
   const handleLogOut = () => {
     console.log("Log out");
+    Cookies.remove('auth');
     router.push("/login");
   };
 

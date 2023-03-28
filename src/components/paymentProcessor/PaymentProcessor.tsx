@@ -22,7 +22,7 @@ export const PaymentProcessor = ({ pickImage }: IPaymentProcessorProps) => {
       <Image
         src={providerImage}
         alt="Logotipo del proveedor de pagos"
-        width={40}
+        width={50}
         height={40}
       />
     </div>

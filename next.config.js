@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["langavi-product-pictures.s3.amazonaws.com"],
+    domains: ["langavi-product-pictures.s3.amazonaws.com", "www.langavi.com"],
   },
 };
 

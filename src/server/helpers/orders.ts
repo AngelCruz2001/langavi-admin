@@ -54,7 +54,7 @@ export const getDisplayOrders = async (
           orderStatus,
           orderNumber,
           provider,
-          shippingAddress: `${shippingAddress.city},${shippingAddress.estate}.`,
+          shippingAddress: `${shippingAddress.city}, ${shippingAddress.estate}.`,
         })
       ),
       currentPage: page,

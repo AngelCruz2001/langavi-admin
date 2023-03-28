@@ -15,7 +15,7 @@ export const BehindBox = ({
   show,
   customStyles,
   noPadding = false,
-  setShow = () => {},
+  setShow = () => { },
 }: React.PropsWithChildren<IBehindBoxProps>) => {
   // When the user clicks anywhere outside of the modal, close it
   const modalRef = useRef<HTMLDivElement>(null);
@@ -47,7 +47,7 @@ export const BehindBox = ({
     // Get total width of page to calculate the position of the modal
     const totalWidth = document.body.getBoundingClientRect().width;
 
-    console.log(parent);
+    // console.log(parent);
     if (parent && modalRef.current) {
       modalRef.current!.style.top = `${parent.top + 40}px`;
 

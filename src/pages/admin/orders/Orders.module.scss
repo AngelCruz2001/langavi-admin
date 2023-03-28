@@ -4,11 +4,15 @@
 }
 
 .firstSection {
-    @include mixins.respond(from-tab-port) {
-        width: 70%;
-    }
+  @include mixins.respond(from-tab-port) {
+    width: 70%;
+  }
 }
 
 .section {
-    margin-top: 1rem;
+  margin-top: 1rem;
+}
+
+.shortAddress {
+  text-transform: capitalize;
 }
